@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2>Clientes</h2>
+  </div>
+  <div class="col-md-6">
+    <button mat-raised-button color="primary">Crear</button>
+  </div>
+</div>
+
+<app-clients-grid></app-clients-grid>
+
+
+<!--<p *ngIf="!(clients && clients.length)">
+  No existen clientes registrados
+</p>
+<table class="table" *ngIf="(clients && clients.length)">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Descripción</th>
+      <th>Cantidad Licencias</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.code }}</td>
+      <td>{{ client.description }}</td>
+      <td>0</td>
+      <td>
+        <button class="btn btn-primary" [routerLink]='["/clients-edit/" + client.id ]'>Editar</button>
+        <button class="btn btn-primary" (click)="delete(client.id)">Descontinuar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>-->

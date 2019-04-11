@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="AssetsVersions\Commands\DeleteAssetsVersion\" />
+    <Folder Include="AssetsVersions\Commands\UpdateAssetsVersion\" />
+    <Folder Include="Clients\Commands\CreateClient\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="Licenses\Queries\GetAllDiscontinuedLicenses\" />
+    <Folder Include="StockTypes\" />
+    <Folder Include="PaymentControls\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="FluentValidation" Version="8.2.0" />
+    <PackageReference Include="MediatR" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\clientsControl.Persistence\clientsControl.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
