@@ -30,8 +30,8 @@ namespace clientsControl.Web.Controllers
             return Ok(await Mediator.Send(new GetClientQuery() { Id = Id }));
         }
 
-        [HttpPut]
-        public async Task<ActionResult<UpdateClientUpdated>> Update([FromBody]UpdateClientCommand command)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<UpdateClientUpdated>> Update(Guid Id, [FromBody]UpdateClientCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

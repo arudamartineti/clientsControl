@@ -1,7 +1,6 @@
 export interface IClient {
   id: string,
   code: string,
-  description: string,
-  //descontinued: boolean,
+  description: string  
   //contacts: IContact[]
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -14,7 +14,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module'
 import { ClientsService } from './services/clients.service';
 import { ClientsGridComponent } from './clients/clients-grid/clients-grid.component';
-import { MatIcon } from '@angular/material'
+import { MatIcon, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MenuComponent } from './menu/menu.component';
+import { ClientComponent } from './clients/client/client.component'
 
 
 
@@ -28,25 +31,36 @@ import { MatIcon } from '@angular/material'
     CounterComponent,
     FetchDataComponent,
     ClientsComponent,
-    ClientsGridComponent       
+    ClientsGridComponent,
+    MenuComponent,
+    ClientComponent         
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    MaterialModule,    
+    MaterialModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'clients', component: ClientsComponent },
+      { path: 'clients/add', component: ClientComponent },
     ]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
     //MatTableModule,
     //MatPaginatorModule,
     //MatSortModule   
   ],
   providers: [ClientsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ClientComponent]
 })
 export class AppModule { }
