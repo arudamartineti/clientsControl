@@ -8,6 +8,7 @@
     <Compile Remove="Migrations\20190403170554_Configuration.cs" />
     <Compile Remove="Migrations\20190403170723_ConfigurationMig1.cs" />
     <Compile Remove="Migrations\20190403174638_Licenses.cs" />
+    <Compile Remove="Migrations\20190411233543_CodeClientLength.cs" />
   </ItemGroup>
 
   <ItemGroup>

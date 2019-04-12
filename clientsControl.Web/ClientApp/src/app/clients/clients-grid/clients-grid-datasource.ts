@@ -87,9 +87,9 @@ export class ClientsGridDataSource extends DataSource<IClient> {
     });
   }
 
-  applyFilter(filter: string) {
-    this.data.filter = filter.toLowerCase();
-  }
+  //applyFilter(filter: string) {
+  //  this.data.filter = filter.toLowerCase();
+  //}
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
