@@ -8,13 +8,13 @@ import { MatInputModule } from '@angular/material'
 import { MatMenuModule } from '@angular/material'
 import { MatDialogModule } from '@angular/material'
 import { MatFormFieldModule } from '@angular/material'
-
+import { MatSnackBarModule } from '@angular/material'
 
 
 
 @NgModule({
   //declarations: [],
-  imports: [MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatInputModule, MatMenuModule, MatDialogModule, MatFormFieldModule],
-  exports: [MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatInputModule, MatMenuModule, MatDialogModule, MatFormFieldModule]
+  imports: [MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatInputModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatSnackBarModule],
+  exports: [MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatInputModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatSnackBarModule]
 })
 export class MaterialModule { }

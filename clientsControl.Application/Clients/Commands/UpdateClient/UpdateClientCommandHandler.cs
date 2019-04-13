@@ -29,7 +29,7 @@ namespace clientsControl.Application.Clients.Commands.UpdateClient
                 throw new NotFoundException(nameof(Client), request.Id);
             }
 
-            if (db.Clients.Where(c => c.Code == request.Code).Any())
+            if (db.Clients.Where(c => c.Id != request.Id && c.Code == request.Code).Any())
                 throw new CodeUsedException(nameof(Client), request.Code);
 
             ent.Code = request.Code;

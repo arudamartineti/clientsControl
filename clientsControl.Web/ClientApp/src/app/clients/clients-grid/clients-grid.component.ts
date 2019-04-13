@@ -34,7 +34,9 @@ export class ClientsGridComponent implements OnInit {
   }
 
   create() {
-    this.clientDialog.open(ClientComponent).afterClosed().subscribe(value => { this.refreshDataSource() });
+    const config = new MatDialogConfig();
+    config.width = "300px";
+    this.clientDialog.open(ClientComponent, config).afterClosed().subscribe(value => { this.refreshDataSource() });
   }
 
 

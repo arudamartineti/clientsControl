@@ -10,19 +10,11 @@ import { ClientsService } from '../services/clients.service';
 })
 export class ClientsComponent implements OnInit {
 
-  //clients: IClient[];
-
   constructor(private clientService: ClientsService) {
     
   }
 
-  ngOnInit() {
-    //this.loadData();
+  ngOnInit() {  
   }
-
-  //loadData() {
-  //  this.clientService.getClients()
-  //    .subscribe(clientsFromWebService => this.clients = clientsFromWebService, error => console.log(error));
-  //}
 
 }

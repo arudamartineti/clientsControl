@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AssetsVersions\Commands\DeleteAssetsVersion\" />
-    <Folder Include="AssetsVersions\Commands\UpdateAssetsVersion\" />
     <Folder Include="Clients\Commands\CreateClient\" />
     <Folder Include="Configuration\" />
     <Folder Include="Licenses\Queries\GetAllDiscontinuedLicenses\" />

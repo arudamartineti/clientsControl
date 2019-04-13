@@ -9,8 +9,8 @@ namespace clientsControl.Application.Clients.Commands.UpdateClient
     {
         public UpdateClientCommandValidator()
         {
-            //RuleFor(c => c.Id).NotEmpty();
-            //RuleFor(c => c.Id).NotEqual(Guid.Empty);
+            RuleFor(c => c.Id).NotEmpty();
+            RuleFor(c => c.Id).NotEqual(Guid.Empty);
 
             RuleFor(c => c.Code).NotEmpty();
             RuleFor(c => c.Description).NotEmpty();
