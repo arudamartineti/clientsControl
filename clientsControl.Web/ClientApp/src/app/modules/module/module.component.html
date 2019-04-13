@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Módulo de Assets</h2>
+<form class="form" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+  <div class="moduleFormContainer">
+    <mat-form-field class="">
+      <input matInput formControlName="description" type="text" required placeholder="Descripción" id="description">
+      <mat-error>El campo Descripción es obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input matInput formControlName="workStations" type="number" required placeholder="Estaciones de Trabajo" id="workStations">
+      <mat-error>El campo Estaciones de Trabajo es obligatorio</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" (click)="onSave()">Guardar</button>
+  </div>
+</form>
+

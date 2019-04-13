@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Versión de Assets</h2>
+<form class="form" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+  <div class="assetsVersionFormContainer">
+    <!--<mat-form-field class="">
+      <input matInput formControlName="code" type="text" required placeholder="Código" id="code">
+      <mat-error>El campo Código es obligatorio</mat-error>
+    </mat-form-field>-->
+    <mat-form-field class="">
+      <input matInput formControlName="description" type="text" required placeholder="Descripción" id="description">
+      <mat-error>El campo Descripción es obligatorio</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" (click)="onSave()">Guardar</button>
+  </div>
+</form>

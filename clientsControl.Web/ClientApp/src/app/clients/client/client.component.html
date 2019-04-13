@@ -1,0 +1,78 @@
+<form class="form" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+  <div class="clientFormContainer">
+    <mat-form-field class="">
+      <input matInput formControlName="code" type="text" required placeholder="Código" id="code">
+      <mat-error>El campo Código es obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input matInput formControlName="description" type="text" required placeholder="Descripción" id="description">
+      <mat-error>El campo Descripción es obligatorio</mat-error>
+    </mat-form-field>
+  </div>  
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" (click)="save()">Guardar</button>
+  </div>
+</form>
+<!--<h1>Agregar Cliente</h1>
+
+
+<form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+  <fieldset>
+    <div class="form-group" [ngClass]="{'has-error' : (formGroup.get('code').touched || formGroup.get('code').dirty) && !formGroup.get('code').valid }">
+      <label class="col-md-2 control-label" for="code">Código</label>
+      <div class="col-md-8">
+        <input class="form-control" id="code" type="text" required formControlName="code" />
+        <span class="help-block" *ngIf="(formGroup.get('code').touched || formGroup.get('code').dirty) && !formGroup.get('code').valid">
+          <span *ngIf="formGroup.get('code').errors.required">El campo Código es requerido</span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error' : (formGroup.get('description').touched || formGroup.get('description').dirty) && !formGroup.get('description').valid }">
+      <label class="col-md-2 control-label" for="code">Descripción</label>
+      <div class="col-md-8">
+        <input class="form-control" id="description" type="text" required formControlName="description" />
+        <span class="help-block" *ngIf="(formGroup.get('description').touched || formGroup.get('description').dirty) && !formGroup.get('description').valid">
+          <span *ngIf="formGroup.get('description').errors.required">El campo Descripción es requerido</span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <a class="btn btn-primary" (click)="addContact()">Agregar Contacto</a>
+    </div>
+    <div formArrayName="contacts" *ngFor="let contact of formGroup.get('contacts').controls; let i = index;">
+      <div [formGroupName]="i">
+        <div class="form-group">
+          <label class="col-md-2 control-label" [attr.for]="'name' + i">Nombre</label>
+          <div class="col-md-8">
+            <input class="form-control" type="text" [attr.id]="'name' + i" formControlName="name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label" [attr.for]="'email' + i">EMail</label>
+          <div class="col-md-8">
+            <input class="form-control" type="text" [attr.id]="'email' + i" formControlName="email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label" [attr.for]="'phoneNumber' + i">Teléfono</label>
+          <div class="col-md-8">
+            <input class="form-control" type="text" [attr.id]="'phoneNumber' + i" formControlName="phoneNumber" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-8">
+            <button type="button" class="btn btn-danger pull-right" (click)="removeContact(i)">Remover</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <span>
+          <button class="btn btn-primary" type="button" [disabled]="!formGroup.valid" (click)="save()">Guardar</button>
+          <button class="btn btn-primary" type="button" [routerLink]='["/clients"]'>Cancelar</button>
+        </span>
+      </div>
+    </div>
+  </fieldset>
+</form>-->
