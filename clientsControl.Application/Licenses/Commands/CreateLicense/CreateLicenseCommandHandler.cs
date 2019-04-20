@@ -1,4 +1,5 @@
-﻿using clientsControl.Application.Exceptions;
+﻿using AutoMapper;
+using clientsControl.Application.Exceptions;
 using clientsControl.Domain.Entities;
 using clientsControl.Persistence;
 using MediatR;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace clientsControl.Application.Licenses.Commands.CreateLicense
 {
@@ -15,11 +17,13 @@ namespace clientsControl.Application.Licenses.Commands.CreateLicense
     {
         private clientsControlDbContext db;
         private IMediator mediator;
+        private IMapper mapper;
 
-        public CreateLicenseCommandHandler(clientsControlDbContext db, IMediator mediator)
+        public CreateLicenseCommandHandler(clientsControlDbContext db, IMediator mediator, IMapper mapper)
         {
             this.db = db;
             this.mediator = mediator;
+            this.mapper = mapper;
         }
 
         public async Task<CreateLicenseCreated> Handle(CreateLicenseCommand request, CancellationToken cancellationToken)
@@ -34,7 +38,7 @@ namespace clientsControl.Application.Licenses.Commands.CreateLicense
                 throw new NotFoundException(nameof(AssetsVersion), request.VersionId);
 
             if (!db.LicenseClientClasification.Where(c => c.ClientId == request.ClientId && c.Code == "All").Any())
-                throw new NotFoundException(nameof(LicenseClientClasification), "All");
+                throw new NotFoundException(nameof(LicenseClientsClasifications), "All");
 
             var licenseClientAllClasification = db.LicenseClientClasification.Where(c => c.ClientId == request.ClientId && c.Code == "All").FirstOrDefault();
 
@@ -50,8 +54,18 @@ namespace clientsControl.Application.Licenses.Commands.CreateLicense
                 Name = request.Name,
                 StockTypeId = request.StockTypeId,
                 VersionId = request.VersionId,
-                LicenseNames = new List<LicenseName>() { new LicenseName() { Id = Guid.NewGuid(), Date = request.CreationDate, Name = request.Name, REUP = request.REUP } }
+                LicenseNames = new List<LicenseName>() { new LicenseName() { Id = Guid.NewGuid(), Date = request.CreationDate, Name = request.Name, REUP = request.REUP } },
+                //LicenseDetails = mapper.ProjectTo<LicenseDetail>(request.LicenseDetails.AsQueryable<LicenseDetailDto>())
             };
+
+            // buscar como hacer esto mejor
+
+            foreach (var detail in request.LicenseDetails)
+            {
+                ent.LicenseDetails.Add(new LicenseDetail() { ModuleId = detail.ModuleId, Licencias = detail.Licencias, PcAdicionales = detail.PcAdicionales, PcConsultas = detail.PcConsultas });
+            }
+
+
 
             db.Licenses.Add(ent);
             await db.SaveChangesAsync(cancellationToken);

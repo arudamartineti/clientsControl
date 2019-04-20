@@ -33,6 +33,7 @@ namespace clientsControl.Application.Clients.Commands.CreateClient
                 Code = request.Code,
                 Description = request.Description,
                 Discontinued = false,
+                AssetsCode = request.AssetsCode,
                 LicenseClasifications = { new LicenseClientClasification() { Id = Guid.NewGuid(), Code = "All", Name = "Todas las Licencias del Cliente" } }
             };
 
@@ -41,25 +42,6 @@ namespace clientsControl.Application.Clients.Commands.CreateClient
             await db.SaveChangesAsync(cancellationToken);            
 
             return new CreateClientCreated() { Id = ent.Id, Code = ent.Code, Description = ent.Description };
-        }
-
-        //public async Task<Unit> Handle(CreateClientCommand request, CancellationToken cancellationToken)
-        //{
-        //    var ent = new Client()
-        //    {
-        //        Id = Guid.NewGuid(),
-        //        Code = request.Code,
-        //        Description = request.Description,
-        //        Discontinued = false,
-        //        LicenseClasifications = { new LicenseClientClasification() { Id = Guid.NewGuid(), Code = "All", Name = "Todas las Licencias del Cliente" } }
-        //    };
-
-        //    db.Clients.Add(ent);
-
-        //    await db.SaveChangesAsync(cancellationToken);
-        //    await mediator.Publish(new CreateClientCreated { Id = ent.Id, Code = ent.Code, Description = ent.Description }, cancellationToken);
-
-        //    return Unit.Value;
-        //}
+        }        
     }
 }

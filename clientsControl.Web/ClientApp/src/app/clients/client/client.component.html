@@ -1,4 +1,4 @@
-<form class="form" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+<form class="form" novalidate (ngSubmit)="return" [formGroup]="formGroup">
   <div class="clientFormContainer">
     <mat-form-field class="">
       <input matInput formControlName="code" type="text" required placeholder="Código" id="code">
@@ -8,7 +8,14 @@
       <input matInput formControlName="description" type="text" required placeholder="Descripción" id="description">
       <mat-error>El campo Descripción es obligatorio</mat-error>
     </mat-form-field>
-  </div>  
+    <mat-form-field class="">
+      <input matInput formControlName="assetsCode" type="text"  placeholder="Código en Assets" id="assetsCode">
+      <mat-error></mat-error>
+    </mat-form-field>
+  </div>
+  <mat-error>
+    {{ serverErrorString }}
+  </mat-error>
   <div class="button-row">
     <button mat-raised-button color="primary" type="submit" (click)="save()">Guardar</button>
   </div>

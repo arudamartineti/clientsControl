@@ -16,11 +16,13 @@ namespace clientsControl.Persistence.Configurations
             builder.HasKey(c => c.Id).ForSqlServerIsClustered(true);
 
             builder.Property(e => e.Description).HasMaxLength(255);
-            builder.Property(e => e.Code).HasMaxLength(12);
+            builder.Property(e => e.Code).HasMaxLength(255);
             builder.Property(e => e.Discontinued).HasDefaultValue(false);
 
             builder.HasMany(c => c.LicenseClasifications).WithOne(c => c.Client).OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(c => c.Contacts).WithOne(c => c.Client).OnDelete(DeleteBehavior.Cascade);
+
+            builder.Property(c => c.AssetsCode).IsRequired(false);
         }
     }
 }

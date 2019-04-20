@@ -7,6 +7,7 @@ using clientsControl.Application.Clients.Commands.DeleteClient;
 using clientsControl.Application.Clients.Commands.UpdateClient;
 using clientsControl.Application.Clients.Queries.GetAllClients;
 using clientsControl.Application.Clients.Queries.GetClient;
+using clientsControl.Application.LicenseClientsClasifications.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,12 @@ namespace clientsControl.Web.Controllers
         public async Task<ActionResult<IEnumerable<ClientDto>>> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllClientsQuery()));
+        }
+
+        [HttpGet("clasifications/{id}")]
+        public async Task<ActionResult<IEnumerable<LicenseClientClasificationDto>>> GetAllClasifications(Guid id)
+        {
+            return Ok(await Mediator.Send(new GetLicenseClasificationsClientQuery() { Id = id } ));
         }
 
         [HttpGet("{id}")]

@@ -27,6 +27,14 @@ import { ModulesGridComponent } from './modules/modules-grid/modules-grid.compon
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { ModulesService } from './services/modules.service';
 import { ModuleComponent } from './modules/module/module.component';
+import { StocktypesComponent } from './stocktypes/stocktypes.component';
+import { StocktypeComponent } from './stocktypes/stocktype/stocktype.component';
+import { StocktypeGridComponent } from './stocktypes/stocktype-grid/stocktype-grid.component';
+import { LicensesComponent } from './licenses/licenses.component';
+import { LicenseComponent } from './licenses/license/license.component';
+import { LicensesGridComponent } from './licenses/licenses-grid/licenses-grid.component';
+import { LicenseService } from './services/license.service';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +48,7 @@ import { ModuleComponent } from './modules/module/module.component';
     MenuComponent,
     ClientComponent,    
     AssetsVersionsComponent,    
-    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent         
+    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent         
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -55,6 +63,9 @@ import { ModuleComponent } from './modules/module/module.component';
       { path: 'clients', component: ClientsComponent },
       { path: 'assets-versions', component: AssetsVersionsComponent },
       { path: 'modules', component: ModulesComponent },
+      { path: 'stock-types', component: StocktypesComponent },
+      { path: 'licenses', component: LicensesComponent },
+      { path: 'payments', component: PaymentsComponent }
     ]),
     BrowserAnimationsModule,
     LayoutModule,
@@ -62,8 +73,8 @@ import { ModuleComponent } from './modules/module/module.component';
     MatPaginatorModule,
     MatSortModule,    
   ],
-  providers: [ClientsService, AssetsversionService, ModulesService, NotificationUiService],
+  providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService],
   bootstrap: [AppComponent],
-  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, ConfirmationDialogComponent]
+  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent]
 })
 export class AppModule { }

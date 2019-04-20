@@ -4,6 +4,7 @@ import { IClient } from '../../interfaces/client';
 import { ClientsService } from '../../services/clients.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
+import { NotificationUiService } from '../../services/notification-ui.service';
 
 
 @Component({
@@ -18,15 +19,18 @@ export class ClientComponent implements OnInit {
   clientId: string;
   contactsToDelete: string[] = [];
   ignorePendingChanges: boolean = false;
+  serverError: boolean;
+  serverErrorString: string = '';
 
-  constructor(private formBuilder: FormBuilder, /*private contactsService: ContactsService, */private clientsServices: ClientsService, private router: Router, private activatedRoute: ActivatedRoute, public dialogRef: MatDialogRef<ClientComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(public notificationService: NotificationUiService, private formBuilder: FormBuilder, /*private contactsService: ContactsService, */private clientsServices: ClientsService, private router: Router, private activatedRoute: ActivatedRoute, public dialogRef: MatDialogRef<ClientComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
 
   }
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({
       code: '',
-      description: ''      
+      description: '',
+      assetsCode : ''
       //contacts: this.formBuilder.array([])
     });
     
@@ -59,7 +63,8 @@ export class ClientComponent implements OnInit {
     this.formGroup.patchValue({
       id: client.id,
       code: client.code,
-      description: client.description      
+      description: client.description,
+      assetsCode: client.assetsCode
     });
 
     /*let contacts = this.formGroup.get('contacts') as FormArray;
@@ -78,13 +83,18 @@ export class ClientComponent implements OnInit {
 
     if (this.editMode) {
       client.id = this.clientId;      
-      this.clientsServices.updateClient(this.clientId, client).subscribe(client => this.onSaveSuccess(), error => console.log(error));
+      this.clientsServices.updateClient(this.clientId, client).subscribe(client => this.onSaveSuccess(), error => this.errorServer(error));
     }
     else {
-      this.clientsServices.createClient(client).subscribe(client => this.onSaveSuccess(), error => console.log(error));
-    }
+      this.clientsServices.createClient(client).subscribe(client => this.onSaveSuccess(), error => this.errorServer(error));
+    }    
+  }
 
-    
+  errorServer(error) {
+    this.serverError = true;
+    console.log(error);
+
+    this.serverErrorString = error.error.error[0];
   }
 
   /*deleteContacts() {
@@ -96,9 +106,10 @@ export class ClientComponent implements OnInit {
     this.contactsService.deleteContacts(this.contactsToDelete).subscribe(deleted => this.onSaveSuccess(), error => console.log(error));
   }*/
 
-  onSaveSuccess() {
+  onSaveSuccess(msg : string = "Operación completada") {
     //this.router.navigate(["/clients"]);
     this.dialogRef.close();
+    this.notificationService.success(msg);
   }
 
   addContact() {

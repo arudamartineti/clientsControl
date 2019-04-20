@@ -17,6 +17,7 @@ namespace clientsControl.Domain.Entities
         public Guid Id { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
+        public string AssetsCode { get; set; }
         public bool Discontinued { get; set; }
         public ICollection<Contact> Contacts {get; private set;}
         public ICollection<LicenseClientClasification> LicenseClasifications { get; private set; }

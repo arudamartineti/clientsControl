@@ -37,7 +37,7 @@ namespace clientsControl.Application.Licenses.Commands.UpdateLicense
                 throw new NotFoundException(nameof(AssetsVersion), request.VersionId);
 
             if (!db.LicenseClientClasification.Where(c => c.ClientId == request.ClasificationId).Any())
-                throw new NotFoundException(nameof(LicenseClientClasification), request.ClasificationId);
+                throw new NotFoundException(nameof(LicenseClientsClasifications), request.ClasificationId);
 
             var ent = db.Licenses.Where(c => c.Id == request.Id).FirstOrDefault();
 

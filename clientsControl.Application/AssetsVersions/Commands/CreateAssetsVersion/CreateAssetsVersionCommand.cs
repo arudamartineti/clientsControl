@@ -7,6 +7,6 @@ namespace clientsControl.Application.AssetsVersions.Commands.CreateAssetsVersion
 {
     public class CreateAssetsVersionCommand : IRequest<CreateAssetsVersionCreated>
     {        
-        public string Description { get; set; }
+        public string Description { get; set; }        
     }
 }

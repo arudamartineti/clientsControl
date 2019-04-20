@@ -87,6 +87,14 @@ export class ClientsGridDataSource extends DataSource<IClient> {
     });
   }
 
+  //private getFilteredData(data: IClient[]) {
+  //  if (this.filter == null || this.filter == '') {
+  //    return data;
+  //  }
+
+  //  return data.filter()
+  //}
+
   //applyFilter(filter: string) {
   //  this.data.filter = filter.toLowerCase();
   //}

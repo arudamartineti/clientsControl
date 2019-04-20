@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { IClient } from '../interfaces/client';
+import { IClientLicenseClasification } from '../interfaces/client-license-clasification';
 
 @Injectable()
 export class ClientsService {
@@ -17,6 +18,10 @@ export class ClientsService {
 
   getClient(id: string): Observable<IClient> {
     return this.http.get<IClient>(this.apiUrl + "/" + id);
+  }
+
+  getClientClasifications(id: string): Observable<IClientLicenseClasification[]> {
+    return this.http.get<IClientLicenseClasification[]>(this.apiUrl + "/clasifications/" + id);
   }
 
   createClient(client: IClient): Observable<IClient> {

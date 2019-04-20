@@ -41,8 +41,10 @@ namespace clientsControl.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("AssetsCode");
+
                     b.Property<string>("Code")
-                        .HasMaxLength(12);
+                        .HasMaxLength(255);
 
                     b.Property<string>("Description")
                         .HasMaxLength(255);
@@ -54,7 +56,7 @@ namespace clientsControl.Persistence.Migrations
                     b.HasKey("Id")
                         .HasAnnotation("SqlServer:Clustered", true);
 
-                    b.ToTable("Clients");
+                    b.ToTable("Client");
                 });
 
             modelBuilder.Entity("clientsControl.Domain.Entities.Configuration", b =>

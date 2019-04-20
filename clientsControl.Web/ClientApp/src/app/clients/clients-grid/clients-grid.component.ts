@@ -17,7 +17,7 @@ export class ClientsGridComponent implements OnInit {
   filter: string;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['code', 'description', 'actions'];
+  displayedColumns = ['code', 'description', 'assetsCode', 'actions'];
 
   constructor(private clientService: ClientsService, private clientDialog: MatDialog) {        
   }
@@ -26,10 +26,11 @@ export class ClientsGridComponent implements OnInit {
     this.dataSource = new ClientsGridDataSource(this.paginator, this.sort, this.clientService);    
   }
 
-  applyFilter() {    
+  applyFilter() {
+    //this.dataSource.filter = this.filter.trim().toLowerCase();
   }
 
-  onClearFilter() {    
+  onClearFilter() {
     this.filter = "";
   }
 

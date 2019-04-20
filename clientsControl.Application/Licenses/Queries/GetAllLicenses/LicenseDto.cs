@@ -14,11 +14,16 @@ namespace clientsControl.Application.Licenses.Queries.GetAllLicenses
         public string Name { get; set; }
         public string Code { get; set; }
         public DateTime CreationDate { get; set; }
-        public bool Descontinued { get; set; }
-        public Guid ClientId { get; set; }                
-        public Guid VersionId { get; set; }        
+        //public bool Descontinued { get; set; }
+        public Guid ClientId { get; set; }
+        public string ClientDescription { get; set; }
+        public string ClientCode { get; set; }
+        public Guid VersionId { get; set; }   
+        public string VersionDescription { get; set; }
         public Guid StockTypeId { get; set; }
+        public string StockTypeDescription { get; set; }
         public Guid ClasificationId { get; set; }
+        public string ClasificationClientDescription { get; set; }
 
         public void CreateMappings(Profile configuration)
         {

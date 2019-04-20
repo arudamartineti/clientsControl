@@ -1,7 +1,7 @@
 <div class="search-div">
   <mat-form-field class="search-form-field">
     <input matInput [(ngModel)]="filter" placeholder="Buscar..." autocomplete="off" (keyup)="applyFilter()" />
-    <button mat-button matSuffix mat-icon-button aria-label="Limpiars" (click)="onClearFilter()">
+    <button mat-button matSuffix mat-icon-button aria-label="Limpiar" (click)="onClearFilter()" *ngIf="filter">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
@@ -25,6 +25,11 @@
     <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</th>
       <td mat-cell *matCellDef="let row">{{row.description}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="assetsCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Código ASSETS</th>
+      <td mat-cell *matCellDef="let row">{{row.assetsCode}}</td>
     </ng-container>
 
     <ng-container matColumnDef="actions">

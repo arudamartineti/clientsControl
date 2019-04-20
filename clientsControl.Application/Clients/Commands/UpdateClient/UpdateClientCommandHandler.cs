@@ -34,6 +34,7 @@ namespace clientsControl.Application.Clients.Commands.UpdateClient
 
             ent.Code = request.Code;
             ent.Description = request.Description;
+            ent.AssetsCode = request.AssetsCode;
 
             db.Clients.Update(ent);
 

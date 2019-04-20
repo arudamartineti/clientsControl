@@ -19,7 +19,7 @@ export class AssetsVersionsGridComponent implements OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['description', 'actions'];
 
-  constructor(public notificationService: NotificationUiService, private assetsVersionService: AssetsversionService, private assetsVersionDialog: MatDialog, private notificacionUIService: NotificationUiService, private confirmDialog: MatDialog) { }
+  constructor(private assetsVersionService: AssetsversionService, private assetsVersionDialog: MatDialog, private notificacionUIService: NotificationUiService, private confirmDialog: MatDialog) { }
 
   ngOnInit() {
     this.refreshDataSource();

@@ -8,7 +8,6 @@
     <Folder Include="Clients\Commands\CreateClient\" />
     <Folder Include="Configuration\" />
     <Folder Include="Licenses\Queries\GetAllDiscontinuedLicenses\" />
-    <Folder Include="StockTypes\" />
     <Folder Include="PaymentControls\Queries\" />
   </ItemGroup>
 
