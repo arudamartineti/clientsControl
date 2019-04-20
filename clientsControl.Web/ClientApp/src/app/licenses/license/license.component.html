@@ -1,0 +1,105 @@
+<h2 mat-dialog-title>Licencia</h2>
+<!--<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+</mat-grid-list>-->
+<!--<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list>-->
+
+<form class="form" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+  <div class="licenseFormContainer">
+    <div class="row">
+      <mat-form-field class="col-md-12">
+        <input matInput formControlName="name" type="text" required placeholder="Nombre" id="name">
+        <mat-error>El campo Descripción es obligatorio</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-md-4">
+        <input matInput formControlName="reup" type="text" required placeholder="REUP" id="reup">
+        <mat-error>El campo REUP es obligatorio</mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-md-4">
+        <input matInput formControlName="code" type="text" required placeholder="Código" id="code">
+        <mat-error>El campo Código es obligatorio</mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-md-4">
+        <input matInput formControlName="creationDate" required placeholder="Fecha" id="creationDate" [matDatepicker]="creationDatePicker">
+        <mat-datepicker-toggle matSuffix [for]="creationDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #creationDatePicker></mat-datepicker>
+        <mat-error>El campo Fecha es obligatorio</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-md-8">
+        <mat-select formControlName="clientId" required placeholder="Cliente" id="clientId" (selectionChange)="onChangeClient($event.value)">
+          <mat-option *ngFor="let client of clients" [value]="client.id">
+            {{client.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-md-4">
+        <mat-select formControlName="clasificationId" required placeholder="Clasificación" id="clasificationId">
+          <mat-option *ngFor="let clasification of clientLicenseClasifications" [value]="clasification.id">
+            {{clasification.code}} - {{clasification.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-md-4">
+        <mat-select formControlName="versionId" required placeholder="Versión ASSETS" id="versionId">
+          <mat-option *ngFor="let version of assetsVersions" [value]="version.id">
+            {{version.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-md-4">
+        <mat-select formControlName="stockTypeId" required placeholder="Tipo de Módulo de Inventario" id="stockTypeId">
+          <mat-option *ngFor="let stockType of stockTypes" [value]="stockType.id">
+            {{stockType.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row" id="headerDetail">
+      <div class="col-md-6">
+        Módulos
+      </div>
+      <div class="col-md-2">
+        Licencias
+      </div>
+      <div class="col-md-2">
+        PC Adicionales
+      </div>
+      <div class="col-md-2">
+        PC Consulta
+      </div>
+    </div>
+    <div class="" formArrayName="licenseDetails" *ngFor="let licenseDetail of formGroup.get('licenseDetails').controls; let i = index;">
+      <div [formGroupName]="i" class="row">
+        <div class="col-md-6">
+          {{ licenseDetail.get('moduleDescription').value }}
+          <input type="hidden" [attr.id]="'moduleId' + i" formControlName="moduleId" />
+        </div>
+        <mat-form-field class="col-md-2">
+          <input matInput type="number" [attr.id]="'licencias' + i" formControlName="licencias" />
+        </mat-form-field>
+        <mat-form-field class="col-md-2">
+          <input matInput type="number" [attr.id]="'pcAdicionales' + i" formControlName="pcAdicionales" />
+        </mat-form-field>
+        <mat-form-field class="col-md-2">
+          <input matInput type="number" [attr.id]="'pcConsultas' + i" formControlName="pcConsultas" />
+        </mat-form-field>        
+      </div>
+    </div>
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit" (click)="onSave()">Guardar</button>
+    </div>
+  </div>
+</form>

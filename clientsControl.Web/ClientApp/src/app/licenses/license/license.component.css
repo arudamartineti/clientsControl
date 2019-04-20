@@ -1,0 +1,10 @@
+.licenseFormContainer > * {
+  width: 100%;
+}
+
+#headerDetail > * {
+  font-size: 0.5em;
+  font-weight: bold;
+  color: dimgrey;
+  text-align: center;
+}
