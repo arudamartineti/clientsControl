@@ -45,6 +45,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\clientsControl.Application\clientsControl.Application.csproj" />
+    <ProjectReference Include="..\clientsControl.Infrastructure\clientsControl.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

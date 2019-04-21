@@ -16,6 +16,14 @@ export class LicenseService {
     return this.http.get<ILicense[]>(this.apiUrl);
   }
 
+  getLicensesSelect(): Observable<ILicense[]> {
+    return this.http.get<ILicense[]>(this.apiUrl + '/select');
+  }
+
+  getLicensesClientSelect(id:string): Observable<ILicense[]> {
+    return this.http.get<ILicense[]>(this.apiUrl + '/client/' + id + '/select');
+  }  
+
   getLicense(id: string): Observable<ILicense> {
     return this.http.get<ILicense>(this.apiUrl + '/' + id);
   }

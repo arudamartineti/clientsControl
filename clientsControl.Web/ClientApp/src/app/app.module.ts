@@ -35,6 +35,9 @@ import { LicenseComponent } from './licenses/license/license.component';
 import { LicensesGridComponent } from './licenses/licenses-grid/licenses-grid.component';
 import { LicenseService } from './services/license.service';
 import { PaymentsComponent } from './payments/payments.component';
+import { PaymentComponent } from './payments/payment/payment.component';
+import { PaymentsGridComponent } from './payments/payments-grid/payments-grid.component';
+import { PaymentClientComponent } from './payments/payment-client/payment-client.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,7 @@ import { PaymentsComponent } from './payments/payments.component';
     MenuComponent,
     ClientComponent,    
     AssetsVersionsComponent,    
-    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent         
+    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent         
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -70,11 +73,11 @@ import { PaymentsComponent } from './payments/payments.component';
     BrowserAnimationsModule,
     LayoutModule,
     MatTableModule,
-    MatPaginatorModule,
+    MatPaginatorModule, 
     MatSortModule,    
   ],
   providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService],
   bootstrap: [AppComponent],
-  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent]
+  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent, PaymentComponent, PaymentClientComponent]
 })
 export class AppModule { }

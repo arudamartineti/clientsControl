@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Auorizar Licencias de Cliente</h2>
+<form class="form" novalidate (ngSubmit)="Save()" [formGroup]="formGroup">
+  <div class="paymentClientFormContainer">
+    <mat-form-field>
+      <mat-select formControlName="clientId" required placeholder="Cliente" id="clientId" (selectionChange)="onChangeClient($event.value)">
+        <mat-option *ngFor="let client of clients" [value]="client.id">
+          {{client.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerForExpirationDate" placeholder="Autorizar hasta" formControlName="expirationDate" id="expirationDate" required>
+      <mat-datepicker-toggle matSuffix [for]="pickerForExpirationDate"></mat-datepicker-toggle>
+      <mat-datepicker #pickerForExpirationDate></mat-datepicker>
+    </mat-form-field>
+    <section class="sectionCheckBox">
+      <mat-checkbox formControlName="sendByEmail" id="sendByEmail">Enviar por Email</mat-checkbox>
+      <mat-checkbox formControlName="public" id="public">Publicar</mat-checkbox>
+    </section>
+    <div class="" formArrayName="licensesId">
+      <div class="" *ngFor="let license of licenses; let i = index">
+        <mat-checkbox [formControlName]="selected" >{{ license.name }}</mat-checkbox>
+      </div>
+    </div>
+  </div>
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" (click)="onSave()">Guardar</button>
+  </div>
+</form>

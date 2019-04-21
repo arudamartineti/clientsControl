@@ -4,6 +4,9 @@ using clientsControl.Application.Clients.Commands.UpdateClient;
 using clientsControl.Application.Clients.Queries.GetAllClients;
 using clientsControl.Application.Infrastructure;
 using clientsControl.Application.Infrastructure.AutoMapper;
+using clientsControl.Application.Interfaces;
+using clientsControl.Application.PaymentControls.Commands.CreatePaymentControl;
+using clientsControl.Infrastructure.PaymentControl;
 using clientsControl.Persistence;
 using clientsControl.Web.Filters;
 using FluentValidation.AspNetCore;
@@ -32,22 +35,24 @@ namespace clientsControl.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {                        
             // Automapper
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
+
+            // Solution Services
+            services.AddTransient<IPaymentControlTool, PaymentControlTool>();
 
             // MediatR
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             services.AddMediatR(typeof(GetAllClientsQueryHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(CreatePaymentControlCommandHandler).GetTypeInfo().Assembly);
 
             // context
             services.AddDbContext<clientsControlDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("clientsControlDatabase")));
-
-
-
+            
 
             services
                 .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))                

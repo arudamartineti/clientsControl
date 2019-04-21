@@ -11,13 +11,14 @@ import { MatFormFieldModule } from '@angular/material'
 import { MatSnackBarModule } from '@angular/material'
 import { MatGridListModule } from '@angular/material'
 import { MatSelectModule } from '@angular/material'
+import { MatCheckboxModule } from '@angular/material'
 
 
 
 
 @NgModule({
   //declarations: [],
-  imports: [MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatInputModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatSnackBarModule, MatGridListModule, MatAutocompleteModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule],
-  exports: [MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatInputModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatSnackBarModule, MatGridListModule, MatAutocompleteModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule]
+  imports: [MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatInputModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatSnackBarModule, MatGridListModule, MatAutocompleteModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, MatCheckboxModule],
+  exports: [MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatInputModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatSnackBarModule, MatGridListModule, MatAutocompleteModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, MatCheckboxModule]
 })
 export class MaterialModule { }

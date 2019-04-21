@@ -1,0 +1,14 @@
+.paymentFormContainer > * {
+  width: 100%;
+}
+
+.sectionCheckBox {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;  
+}
+
+.sectionCheckBox  > * {
+  margin-right: 10px;
+}

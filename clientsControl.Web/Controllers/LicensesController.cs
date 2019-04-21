@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using clientsControl.Application.Licenses.Commands.CreateLicense;
 using clientsControl.Application.Licenses.Commands.DeleteLicense;
 using clientsControl.Application.Licenses.Commands.UpdateLicense;
+using clientsControl.Application.Licenses.Queries.GetAllLicenseClientSelect;
 using clientsControl.Application.Licenses.Queries.GetAllLicenses;
+using clientsControl.Application.Licenses.Queries.GetAllLicenseSelect;
 using clientsControl.Application.Licenses.Queries.GetLicense;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +21,18 @@ namespace clientsControl.Web.Controllers
         public async Task<ActionResult<IEnumerable<LicenseDto>>> Get()
         {
             return Ok(await Mediator.Send(new GetAllLicensesQuery()));
+        }
+
+        [HttpGet("select")]
+        public async Task<ActionResult<IEnumerable<GetAllLicenseSelectDto>>> GetSelect()
+        {
+            return Ok(await Mediator.Send(new GetAllLicenseSelectQuery()));
+        }
+
+        [HttpGet("client/{id}/select")]
+        public async Task<ActionResult<IEnumerable<GetAllLicenseSelectDto>>> GetLicenseClientSelect(Guid Id)
+        {
+            return Ok(await Mediator.Send(new GetAllLicenseClientSelectQuery() { Id = Id }));
         }
 
         [HttpGet("{id}")]

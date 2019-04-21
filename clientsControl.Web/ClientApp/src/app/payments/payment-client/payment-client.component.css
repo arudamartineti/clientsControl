@@ -1,0 +1,7 @@
+.paymentClientFormContainer > * {
+  width: 100%;
+}
+
+.sectionCheckBox {
+  text-align: right;
+}

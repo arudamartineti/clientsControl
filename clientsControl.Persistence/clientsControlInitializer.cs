@@ -18,6 +18,13 @@ namespace clientsControl.Persistence
         {
             context.Database.EnsureCreated();
 
+            if (!context.Configuration.Any())
+            {
+                var configuration = new Configuration() { Id = Guid.Empty, ClientConsecutive = 0, GeneratedPaymentControlPath = "D:\\PC", LicenceConsecutive = 0, SmtpPassword = "", SmtpPort = "25", SmtpServer = "smtp.com", StmpUser = "user" };
+                context.Configuration.Add(configuration);
+                context.SaveChanges();
+            }
+
             if (context.AssetsVersions.Any())
             {
                 return; // Db has been seeded

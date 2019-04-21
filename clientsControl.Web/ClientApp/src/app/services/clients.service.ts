@@ -16,6 +16,10 @@ export class ClientsService {
     return this.http.get<IClient[]>(this.apiUrl);
   }
 
+  getClientsSelect(): Observable<IClient[]> {
+    return this.http.get<IClient[]>(this.apiUrl + '/select');
+  }
+
   getClient(id: string): Observable<IClient> {
     return this.http.get<IClient>(this.apiUrl + "/" + id);
   }
