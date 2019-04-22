@@ -7,6 +7,7 @@ using clientsControl.Application.Contacts.Commands.DeleteContact;
 using clientsControl.Application.Contacts.Commands.UpdateContact;
 using clientsControl.Application.Contacts.Queries.GetAllContacts;
 using clientsControl.Application.Contacts.Queries.GetAllContactsClient;
+using clientsControl.Application.Contacts.Queries.GetContact;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,19 +24,19 @@ namespace clientsControl.Web.Controllers
             return Ok(await Mediator.Send(new GetAllContactsQuery()));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("client/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<ContactsAllClientDto>>> GetAllContactsClient(Guid Id)
         {
             return Ok(await Mediator.Send(new GetAllContactsClientQuery() { Id = Id }));
         }
 
-        //[HttpGet("client/{id}")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //public async Task<ActionResult<IEnumerable<ContactsAllClientDto>>> GetContact(Guid Id)
-        //{
-        //    return Ok(await Mediator.Send(new GetContactQuery() { Id = Id }));
-        //}
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<ContactAllDto>> GetContact(Guid Id)
+        {
+            return Ok(await Mediator.Send(new GetContactQuery() { Id = Id }));
+        }
 
         [HttpPost]
         public async Task<ActionResult<CreateContactCreated>> Create([FromBody]CreateContactCommand createContact)
