@@ -13,5 +13,8 @@ namespace clientsControl.Application.Contacts.Queries.GetAllContacts
         public Guid ClientId { set; get; }
         public string ClientCode { set; get; }
         public string ClientDescription { set; get; }
+        public bool RecibeLicencias { get; set; }
+        public Guid? LicenseId { get; set; }
+        public string LicenseName { get; set; }
     }
 }

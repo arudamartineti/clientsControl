@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using clientsControl.Persistence;
 
 namespace clientsControl.Persistence.Migrations
 {
     [DbContext(typeof(clientsControlDbContext))]
-    partial class clientsControlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190421220356_ContactosLicencias")]
+    partial class ContactosLicencias
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,6 +97,7 @@ namespace clientsControl.Persistence.Migrations
                     b.Property<Guid>("ClientId");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnName("Email")
                         .HasMaxLength(250);
 
@@ -106,6 +109,7 @@ namespace clientsControl.Persistence.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnName("PhoneNumber")
                         .HasMaxLength(50);
 

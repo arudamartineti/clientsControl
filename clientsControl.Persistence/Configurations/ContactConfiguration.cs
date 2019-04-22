@@ -15,8 +15,10 @@ namespace clientsControl.Persistence.Configurations
 
             builder.Property(e => e.Id).HasColumnName("Id");
             builder.Property(e => e.Name).HasColumnName("Name").IsRequired().HasMaxLength(50);
-            builder.Property(e => e.Email).HasColumnName("Email").IsRequired().HasMaxLength(250);
-            builder.Property(e => e.PhoneNumber).HasColumnName("PhoneNumber").IsRequired().HasMaxLength(50);
+            builder.Property(e => e.Email).HasColumnName("Email").HasMaxLength(250);
+            builder.Property(e => e.PhoneNumber).HasColumnName("PhoneNumber").HasMaxLength(50);
+
+            builder.HasOne(c => c.License).WithMany(c => c.Contacts).HasForeignKey(c => c.LicenseId);
 
             builder.HasOne(c => c.Client).WithMany(c => c.Contacts).HasForeignKey(c => c.ClientId).HasConstraintName("FK_Contacts_Client");
 

@@ -29,6 +29,8 @@ namespace clientsControl.Application.Contacts.Queries.GetAllContacts
                 from contact in db.Contacts
                 join client in db.Clients on contact.ClientId equals client.Id into clients         
                 from client in clients.DefaultIfEmpty()
+                join license in db.Licenses on contact.LicenseId equals license.Id into licenses
+                from license in licenses.DefaultIfEmpty()
                 select new ContactAllDto()
                 {
                     Id = contact.Id,
@@ -37,7 +39,10 @@ namespace clientsControl.Application.Contacts.Queries.GetAllContacts
                     ClientDescription = client.Description,
                     Email = contact.Email,
                     Name = contact.Name,
-                    PhoneNumber = contact.PhoneNumber
+                    PhoneNumber = contact.PhoneNumber,
+                    LicenseId = contact.LicenseId,
+                    LicenseName = license.Name ?? "Indefinido",
+                    RecibeLicencias = contact.RecibeLicencias
                 };
 
             return mapper.ProjectTo<ContactAllDto>(qry);            

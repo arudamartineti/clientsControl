@@ -32,6 +32,8 @@ namespace clientsControl.Application.Contacts.Commands.UpdateContact
             ent.PhoneNumber = request.PhoneNumber;
             ent.Email = request.Email;
             ent.ClientId = request.ClientId;
+            ent.RecibeLicencias = request.RecibeLicencias;
+            ent.LicenseId = request.LicenseId;
 
             db.Contacts.Update(ent);
 

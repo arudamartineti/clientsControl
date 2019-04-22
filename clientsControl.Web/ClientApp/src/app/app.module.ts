@@ -38,6 +38,9 @@ import { PaymentsComponent } from './payments/payments.component';
 import { PaymentComponent } from './payments/payment/payment.component';
 import { PaymentsGridComponent } from './payments/payments-grid/payments-grid.component';
 import { PaymentClientComponent } from './payments/payment-client/payment-client.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ContactComponent } from './contacts/contact/contact.component';
+import { ContactsGridComponent } from './contacts/contacts-grid/contacts-grid.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,7 @@ import { PaymentClientComponent } from './payments/payment-client/payment-client
     MenuComponent,
     ClientComponent,    
     AssetsVersionsComponent,    
-    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent         
+    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent, ContactsComponent, ContactComponent, ContactsGridComponent         
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

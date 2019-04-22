@@ -34,7 +34,9 @@ namespace clientsControl.Application.Contacts.Commands.CreateContact
                 Name = request.Name,
                 Email = request.Email,
                 PhoneNumber = request.PhoneNumber,
-                ClientId = request.ClientId
+                ClientId = request.ClientId,
+                RecibeLicencias = request.RecibeLicencias,
+                LicenseId = request.LicenseId
             };
 
             db.Contacts.Add(ent);

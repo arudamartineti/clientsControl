@@ -29,6 +29,7 @@ namespace clientsControl.Domain.Entities
         public virtual ICollection<LicenseName> LicenseNames { set; get; }
         public virtual ICollection<PaymentControl> PaymentsControl { get; set; }
         public LicenseClientClasification Clasification { get; set; }
+        public virtual ICollection<Contact> Contacts { set; get; }
         public Guid ClasificationId { get; set; }
     }
 }

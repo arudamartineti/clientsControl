@@ -23,12 +23,19 @@ namespace clientsControl.Web.Controllers
             return Ok(await Mediator.Send(new GetAllContactsQuery()));
         }
 
-        [HttpGet("client/{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<ContactsAllClientDto>>> GetAllContactsClient(Guid Id)
         {
             return Ok(await Mediator.Send(new GetAllContactsClientQuery() { Id = Id }));
         }
+
+        //[HttpGet("client/{id}")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //public async Task<ActionResult<IEnumerable<ContactsAllClientDto>>> GetContact(Guid Id)
+        //{
+        //    return Ok(await Mediator.Send(new GetContactQuery() { Id = Id }));
+        //}
 
         [HttpPost]
         public async Task<ActionResult<CreateContactCreated>> Create([FromBody]CreateContactCommand createContact)
@@ -37,8 +44,8 @@ namespace clientsControl.Web.Controllers
         }
 
 
-        [HttpPut]
-        public async Task<ActionResult<UpdateContactUpdated>> Update([FromBody]UpdateContactCommand updateContact)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<UpdateContactUpdated>> Update(Guid id, [FromBody]UpdateContactCommand updateContact)
         {
             return Ok(await Mediator.Send(updateContact));
         }
