@@ -1,4 +1,5 @@
 ﻿using clientsControl.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace clientsControl.Persistence
 {
-    public class clientsControlDbContext : DbContext
+    public class clientsControlDbContext : IdentityDbContext<ApplicationUser> //DbContext
     {        
         public clientsControlDbContext(DbContextOptions<clientsControlDbContext> options) : base(options)
         {            
@@ -14,6 +15,7 @@ namespace clientsControl.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(clientsControlDbContext).Assembly);
         }
 

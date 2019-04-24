@@ -6,21 +6,27 @@ using clientsControl.Application.Infrastructure;
 using clientsControl.Application.Infrastructure.AutoMapper;
 using clientsControl.Application.Interfaces;
 using clientsControl.Application.PaymentControls.Commands.CreatePaymentControl;
+using clientsControl.Domain.Entities;
 using clientsControl.Infrastructure.PaymentControl;
 using clientsControl.Persistence;
 using clientsControl.Web.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
 using MediatR.Pipeline;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Reflection;
+using System.Text;
 
 namespace clientsControl.Web
 {
@@ -42,12 +48,34 @@ namespace clientsControl.Web
             // Solution Services
             services.AddTransient<IPaymentControlTool, PaymentControlTool>();
 
+            // Autentication
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<clientsControlDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = "yourdomain.com",
+                        ValidAudience = "yourdomain.com",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("dmFqOWiptiTHseLkXeLcdmFqOWiptiTHseLkXeLcdmFqOWiptiTHseLkXeLcdmFqOWiptiTHseLkXeLc")),
+                        ClockSkew = TimeSpan.Zero
+                    }
+                );
+
             // MediatR
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             services.AddMediatR(typeof(GetAllClientsQueryHandler).GetTypeInfo().Assembly);
             //services.AddMediatR(typeof(CreatePaymentControlCommandHandler).GetTypeInfo().Assembly);
+
+
 
             // context
             services.AddDbContext<clientsControlDbContext>(options =>
@@ -93,6 +121,7 @@ namespace clientsControl.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

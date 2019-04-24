@@ -45,7 +45,7 @@ namespace clientsControl.Application.Contacts.Queries.GetAllContacts
                     RecibeLicencias = contact.RecibeLicencias
                 };
 
-            return mapper.ProjectTo<ContactAllDto>(qry);            
+            return qry;            
         }
     }
 }

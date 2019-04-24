@@ -9,6 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\clientsControl.Application\clientsControl.Application.csproj" />
     <ProjectReference Include="..\clientsControl.Domain\clientsControl.Domain.csproj" />
     <ProjectReference Include="..\clientsControl.Persistence\clientsControl.Persistence.csproj" />

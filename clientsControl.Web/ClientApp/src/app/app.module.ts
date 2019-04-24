@@ -71,7 +71,8 @@ import { ContactsGridComponent } from './contacts/contacts-grid/contacts-grid.co
       { path: 'modules', component: ModulesComponent },
       { path: 'stock-types', component: StocktypesComponent },
       { path: 'licenses', component: LicensesComponent },
-      { path: 'payments', component: PaymentsComponent }
+      { path: 'payments', component: PaymentsComponent },
+      { path: 'contacts', component: ContactsComponent }
     ]),
     BrowserAnimationsModule,
     LayoutModule,
@@ -81,6 +82,6 @@ import { ContactsGridComponent } from './contacts/contacts-grid/contacts-grid.co
   ],
   providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService],
   bootstrap: [AppComponent],
-  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent, PaymentComponent, PaymentClientComponent]
+  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent, PaymentComponent, PaymentClientComponent, ContactComponent]
 })
 export class AppModule { }

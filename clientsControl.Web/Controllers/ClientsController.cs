@@ -9,14 +9,17 @@ using clientsControl.Application.Clients.Queries.GetAllClients;
 using clientsControl.Application.Clients.Queries.GetAllClientsSelect;
 using clientsControl.Application.Clients.Queries.GetClient;
 using clientsControl.Application.LicenseClientsClasifications.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace clientsControl.Web.Controllers
 {
 
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ClientsController : BaseController
     {
         [HttpGet]

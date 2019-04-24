@@ -2,47 +2,15 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { IContact } from '../../interfaces/contact';
+import { ContactsService } from '../../services/contacts.service';
 
-// TODO: Replace this with your own data model type
-export interface ContactsGridItem {
-  name: string;
-  id: number;
-}
+export class ContactsGridDataSource extends DataSource<IContact> {
+  data: IContact[];
 
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: ContactsGridItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
-];
-
-/**
- * Data source for the ContactsGrid view. This class should
- * encapsulate all logic for fetching and manipulating the displayed data
- * (including sorting, pagination, and filtering).
- */
-export class ContactsGridDataSource extends DataSource<ContactsGridItem> {
-  data: ContactsGridItem[] = EXAMPLE_DATA;
-
-  constructor(private paginator: MatPaginator, private sort: MatSort) {
+  constructor(private paginator: MatPaginator, private sort: MatSort, private contactsService: ContactsService) {
     super();
+    this.contactsService.getContacts().subscribe(contacts => { this.data = contacts; }, error => console.log(error));
   }
 
   /**
@@ -50,7 +18,7 @@ export class ContactsGridDataSource extends DataSource<ContactsGridItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<ContactsGridItem[]> {
+  connect(): Observable<IContact[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -77,7 +45,7 @@ export class ContactsGridDataSource extends DataSource<ContactsGridItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: ContactsGridItem[]) {
+  private getPagedData(data: IContact[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -86,7 +54,7 @@ export class ContactsGridDataSource extends DataSource<ContactsGridItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: ContactsGridItem[]) {
+  private getSortedData(data: IContact[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -94,8 +62,15 @@ export class ContactsGridDataSource extends DataSource<ContactsGridItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
+        case 'id': return compare(a.id, b.id, isAsc);
         case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'email': return compare(a.email, b.email, isAsc);
+        case 'phoneNumber': return compare(a.phoneNumber, b.phoneNumber, isAsc);
+        case 'recibeLicencias': return compare(a.recibeLicencias, b.recibeLicencias, isAsc);
+        case 'clientId': return compare(a.clientId, b.clientId, isAsc);
+        case 'clientDescription': return compare(a.clientDescription, b.clientDescription, isAsc);
+        case 'licenseId': return compare(a.licenseId, b.licenseId, isAsc);
+        case 'licenseName': return compare(a.licenseName, b.licenseName, isAsc);        
         default: return 0;
       }
     });

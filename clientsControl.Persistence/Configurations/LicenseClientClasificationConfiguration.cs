@@ -13,7 +13,7 @@ namespace clientsControl.Persistence.Configurations
         {
             builder.HasKey(c => c.Id).ForSqlServerIsClustered(true);
 
-            builder.Property(c => c.Code).HasMaxLength(6);
+            builder.Property(c => c.Code).HasMaxLength(30);
             builder.Property(c => c.Name).HasMaxLength(120);
 
             builder.HasOne(c => c.Client).WithMany(c => c.LicenseClasifications).HasForeignKey(c => c.ClientId).HasConstraintName("FK_LicenseClientClasification_Client");

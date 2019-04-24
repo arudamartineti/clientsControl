@@ -1,3 +1,38 @@
-<p>
-  contact works!
-</p>
+<h2 mat-dialog-title>Contacto</h2>
+<form class="form" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+  <div class="contactFormContainer">
+    <mat-form-field>
+      <mat-select formControlName="clientId" required placeholder="Cliente" id="clientId" (selectionChange)="loadLicenses($event.value)">
+        <mat-option *ngFor="let client of clients" [value]="client.id">
+          {{ client.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="licenseId" placeholder="Licencia" id="licenseId">
+        <mat-option>No especificado</mat-option>
+        <mat-option *ngFor="let license of licenses" [value]="license.id">
+          {{license.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input matInput formControlName="name" type="text" required placeholder="Nombre" id="name">
+      <mat-error>El campo Nombre es obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input matInput formControlName="email" type="email" required placeholder="Correo Electrónico" id="email">
+      <mat-error>El campo Email debe contener un Email válido</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input matInput formControlName="phoneNumber" type="text" placeholder="Teléfono" id="phoneNumber">
+      <mat-error>El campo Teléfono debe contener un teléfono válido</mat-error>
+    </mat-form-field>
+    <section class="sectionCheckBox">
+      <mat-checkbox formControlName="recibeLicencias" id="recibeLicencias">Recibe Controles de Pago</mat-checkbox>      
+    </section>
+  </div>
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" (click)="onSave()">Guardar</button>
+  </div>
+</form>
