@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using clientsControl.Domain.Entities;
+using clientsControl.Infrastructure.Identity;
 using clientsControl.Persistence;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +32,15 @@ namespace clientsControl.Web
                     context.Database.Migrate();
 
                     clientsControlInitializer.Initialize(context);
+
+                    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                    var seeder = new clientsControlIdentityDbContextSeed();
+                    seeder.SeedRolesAsync(roleManager);
+                    seeder.SeedUsersAsync(userManager);
+                    
+
                 }
                 catch (Exception ex)
                 {

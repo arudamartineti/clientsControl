@@ -9,12 +9,15 @@ using clientsControl.Application.Licenses.Queries.GetAllLicenseClientSelect;
 using clientsControl.Application.Licenses.Queries.GetAllLicenses;
 using clientsControl.Application.Licenses.Queries.GetAllLicenseSelect;
 using clientsControl.Application.Licenses.Queries.GetLicense;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace clientsControl.Web.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class LicensesController : BaseController
     {
         [HttpGet]

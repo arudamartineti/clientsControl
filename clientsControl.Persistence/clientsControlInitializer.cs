@@ -14,17 +14,18 @@ namespace clientsControl.Persistence
             initializer.SeedEverything(context);
         }
 
-        public void SeedEverything(clientsControlDbContext context)
+        public void SeedConfiguration(clientsControlDbContext context)
         {
-            context.Database.EnsureCreated();
-
             if (!context.Configuration.Any())
             {
                 var configuration = new Configuration() { Id = Guid.Empty, ClientConsecutive = 0, GeneratedPaymentControlPath = "D:\\PC", LicenceConsecutive = 0, SmtpPassword = "", SmtpPort = "25", SmtpServer = "smtp.com", StmpUser = "user" };
                 context.Configuration.Add(configuration);
                 context.SaveChanges();
             }
+        }
 
+        public void SeedAssetsVersoin(clientsControlDbContext context)
+        {
             if (context.AssetsVersions.Any())
             {
                 return; // Db has been seeded
@@ -36,11 +37,17 @@ namespace clientsControl.Persistence
                 new AssetsVersion() { Id = Guid.Parse("D20D4D2C-2E7A-4CF6-AD4F-3580B68BBDC4"), Description = "Assets Premium" },
                 new AssetsVersion() { Id = Guid.Parse("0A8614B7-C9BD-4A01-93E3-4A234C74D01B"), Description = "Assets Ultimate sin Web" }
             };
-
             context.AssetsVersions.AddRange(assetsVersions);
-
             context.SaveChanges();
 
+        }
+
+        public void SeedModules(clientsControlDbContext context)
+        {
+            if (context.AssetsVersions.Any())
+            {
+                return;
+            }
 
             var modules = new[]
             {
@@ -65,8 +72,15 @@ namespace clientsControl.Persistence
             };
 
             context.Module.AddRange(modules);
-
             context.SaveChanges();
+        }
+
+        public void SeedStockTypes(clientsControlDbContext context)
+        {
+            if (context.StockTypes.Any())
+            {
+                return;
+            }
 
             var stockTypes = new[] {
                 new StockType { Id = Guid.Parse("0DDF6EDA-B0FA-45FE-8D94-26A4381755D3"), Description = "Comercial", WorkStations = 0},
@@ -79,6 +93,14 @@ namespace clientsControl.Persistence
             context.StockTypes.AddRange(stockTypes);
 
             context.SaveChanges();
+        }
+       
+        public void SeedEverything(clientsControlDbContext context)
+        {
+            context.Database.EnsureCreated();
+            SeedConfiguration(context);
+            SeedAssetsVersoin(context);
+            SeedModules(context);            
         }
 
     }
