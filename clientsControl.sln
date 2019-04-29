@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "clientsControl.Persistence"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "clientsControl.Web", "clientsControl.Web\clientsControl.Web.csproj", "{F986C5D1-0671-4506-A576-EE3B3B3D1183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clientsControl.Infrastructure", "clientsControl.Infrastructure\clientsControl.Infrastructure.csproj", "{B1D28247-7712-4C3C-9D18-89418A5D9A4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "clientsControl.Infrastructure", "clientsControl.Infrastructure\clientsControl.Infrastructure.csproj", "{B1D28247-7712-4C3C-9D18-89418A5D9A4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

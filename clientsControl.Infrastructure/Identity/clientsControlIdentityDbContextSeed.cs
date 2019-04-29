@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace clientsControl.Infrastructure.Identity
 {
-    public class clientsControlIdentityDbContextSeed
+    public static class clientsControlIdentityDbContextSeed
     {
-        public async Task SeedUsersAsync(UserManager<ApplicationUser> userManager)
-        {
-            var defaultUser = new ApplicationUser { UserName = "denny@enpses.co.cu", Email = "denny@enpses.co.cu" };
-            await userManager.CreateAsync(defaultUser, "admin123");
+        //public async Task SeedUsersAsync(UserManager<ApplicationUser> userManager)
+        //{
+        //    var defaultUser = new ApplicationUser { UserName = "denny@enpses.co.cu", Email = "denny@enpses.co.cu" };
+        //    await userManager.CreateAsync(defaultUser, "admin123");
 
-            await userManager.AddToRoleAsync(defaultUser, "Administrador");
+        //    await userManager.AddToRoleAsync(defaultUser, "Administrador");
 
-            //return Task.CompletedTask();
-        }
+        //    //return Task.CompletedTask();
+        //}
 
-        public async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
+        public static async void SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
             var roles = new[] {
                     "Administrador", 
@@ -38,7 +38,11 @@ namespace clientsControl.Infrastructure.Identity
 
                 if (!roleExists)
                 {
-                    result = await roleManager.CreateAsync(new IdentityRole(role));                    
+                    result = await roleManager.CreateAsync(new IdentityRole(role));
+
+                    if (result.Succeeded)
+                    {
+                    }
                 }
             }
 

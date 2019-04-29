@@ -7,6 +7,7 @@ using clientsControl.Application.Infrastructure.AutoMapper;
 using clientsControl.Application.Interfaces;
 using clientsControl.Application.PaymentControls.Commands.CreatePaymentControl;
 using clientsControl.Domain.Entities;
+using clientsControl.Infrastructure.Identity;
 using clientsControl.Infrastructure.PaymentControl;
 using clientsControl.Persistence;
 using clientsControl.Web.Filters;
@@ -47,6 +48,7 @@ namespace clientsControl.Web
 
             // Solution Services
             services.AddTransient<IPaymentControlTool, PaymentControlTool>();
+            services.AddTransient<IIdentityManager, IdentityManager>();
 
             // Autentication
 

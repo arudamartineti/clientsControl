@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using clientsControl.Application.Users.Queries.GetAllUsers;
+using clientsControl.Application.Users.Queries.GetUser;
 using clientsControl.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,21 +13,18 @@ using Microsoft.AspNetCore.Mvc;
 namespace clientsControl.Web.Controllers
 {    
     public class UsersController : BaseController
-    {
-        public UserManager<ApplicationUser> userManager { get; set; }
-        public RoleManager<IdentityRole> roleManager { get; set; }
-
-        public UsersController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+    {        
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<GetAllUsersQueryDto>>> getUsers()
         {
-            this.userManager = userManager;
-            this.roleManager = roleManager;
+            return Ok(await Mediator.Send(new GetAllUsersQuery()));
         }
 
-        [HttpGet("users")]
-        public async Task<ActionResult<IEnumerable<ApplicationUser>>> getUsers()
-        {
-            return Ok(userManager.Users.AsEnumerable<ApplicationUser>());
-        }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GetAllUsersQueryDto>> getUser(string id)
+        {
+            return Ok(await Mediator.Send(new GetUserQuery() { Id = id}));
+        }
     }
 }

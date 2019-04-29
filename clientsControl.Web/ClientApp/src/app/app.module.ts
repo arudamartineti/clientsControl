@@ -41,6 +41,12 @@ import { PaymentClientComponent } from './payments/payment-client/payment-client
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactComponent } from './contacts/contact/contact.component';
 import { ContactsGridComponent } from './contacts/contacts-grid/contacts-grid.component';
+import { UsersComponent } from './users/users.component';
+import { UsersGridComponent } from './users/users-grid/users-grid.component';
+import { UserComponent } from './users/user/user.component';
+import { RegisterComponent } from './account/register/register.component';
+import { LoginComponent } from './account/login/login.component';
+import { UsersService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +60,7 @@ import { ContactsGridComponent } from './contacts/contacts-grid/contacts-grid.co
     MenuComponent,
     ClientComponent,    
     AssetsVersionsComponent,    
-    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent, ContactsComponent, ContactComponent, ContactsGridComponent         
+    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent, ContactsComponent, ContactComponent, ContactsGridComponent, UsersComponent, UsersGridComponent, UserComponent, RegisterComponent, LoginComponent         
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -72,7 +78,10 @@ import { ContactsGridComponent } from './contacts/contacts-grid/contacts-grid.co
       { path: 'stock-types', component: StocktypesComponent },
       { path: 'licenses', component: LicensesComponent },
       { path: 'payments', component: PaymentsComponent },
-      { path: 'contacts', component: ContactsComponent }
+      { path: 'contacts', component: ContactsComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
     ]),
     BrowserAnimationsModule,
     LayoutModule,
@@ -80,7 +89,7 @@ import { ContactsGridComponent } from './contacts/contacts-grid/contacts-grid.co
     MatPaginatorModule, 
     MatSortModule,    
   ],
-  providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService],
+  providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService, UsersService],
   bootstrap: [AppComponent],
   entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent, PaymentComponent, PaymentClientComponent, ContactComponent]
 })

@@ -1,0 +1,36 @@
+<mat-card class="registerCard">
+  <mat-card-title>Registrarse</mat-card-title>
+  <mat-card-subtitle>Complete el siguiente formulario para efectuar el registro en el sistema</mat-card-subtitle>
+  <mat-card-content class="">
+    <form class="form" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+      <div class="registerFormContainer">
+        <mat-form-field class="">
+          <input matInput formControlName="userName" type="email" required placeholder="Nombre de Usuario - pepe@assets.cu" id="userName">
+          <mat-error>El campo Nombre de usuario es obligatorio, y debe ser un correo electrónico válido</mat-error>
+        </mat-form-field>
+        <mat-form-field class="">
+          <input matInput formControlName="fullName" type="text" required placeholder="Nombre y Apellidos" id="fullName">
+          <mat-error>El campo nombre y apellidos es obligatorio</mat-error>
+        </mat-form-field>
+        <mat-form-field class="">
+          <input matInput formControlName="phoneNumber" type="text" placeholder="Teléfono" id="phoneNumber">
+          <mat-error>El campo teléfono debe ser un teléfono válido</mat-error>
+        </mat-form-field>
+        <mat-form-field class="">
+          <input matInput formControlName="password" type="password" required placeholder="Contraseña" id="password">
+          <mat-error>El campo contraseña es obligatorio</mat-error>
+        </mat-form-field>
+        <mat-checkbox formControlName="clientUser" id="clientUser" class="col-md-4">Registrarse como cliente</mat-checkbox>
+        <mat-form-field class="">
+          <input matInput formControlName="clientReup" type="text" placeholder="REUP" id="clientReup" disabled>
+          <mat-error>El campo contraseña es obligatorio</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" (click)="onSave()">Guardar</button>
+      </div>
+    </form>
+  </mat-card-content>  
+</mat-card>
+<!--<h2 mat-dialog-title>Versión de Assets</h2>
+-->
