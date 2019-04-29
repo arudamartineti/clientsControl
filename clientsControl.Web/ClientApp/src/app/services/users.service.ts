@@ -16,6 +16,14 @@ export class UsersService {
     return this.http.get<IUser[]>(this.apiUrl);
   }
 
+  getUser(id: string): Observable<IUser> {
+    return this.http.get<IUser>(this.apiUrl + '/' + id);
+  }
+
+  authorizeUser(id: string, user: IUser): Observable<boolean> {
+    return this.http.put<boolean>(this.apiUrl + '/' + id, user);
+  }
+
   registerUser(user: IUser) : Observable<IUser> {
     return this.http.post<IUser>(this.baseUrl + "api/account/register", user);
   }
