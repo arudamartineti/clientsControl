@@ -47,6 +47,7 @@ import { UserComponent } from './users/user/user.component';
 import { RegisterComponent } from './account/register/register.component';
 import { LoginComponent } from './account/login/login.component';
 import { UsersService } from './services/users.service';
+import { RolesService } from './services/roles.service';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,7 @@ import { UsersService } from './services/users.service';
       { path: 'contacts', component: ContactsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
+      { path: 'register', component: RegisterComponent },      
     ]),
     BrowserAnimationsModule,
     LayoutModule,
@@ -89,8 +90,8 @@ import { UsersService } from './services/users.service';
     MatPaginatorModule, 
     MatSortModule,    
   ],
-  providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService, UsersService],
+  providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService, UsersService, RolesService],
   bootstrap: [AppComponent],
-  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent, PaymentComponent, PaymentClientComponent, ContactComponent]
+  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent, PaymentComponent, PaymentClientComponent, ContactComponent, UserComponent]
 })
 export class AppModule { }

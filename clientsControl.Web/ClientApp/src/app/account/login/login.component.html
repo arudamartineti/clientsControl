@@ -1,3 +1,21 @@
-<p>
-  login works!
-</p>
+<mat-card class="loginCard">
+  <mat-card-title>Autenticación</mat-card-title>
+  <mat-card-subtitle>Provea las credenciales para realizar su autenticación</mat-card-subtitle>
+  <mat-card-content class="">
+    <form class="form" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+      <div class="loginFormContainer">
+        <mat-form-field class="">
+          <input matInput formControlName="userName" type="email" required placeholder="Nombre de Usuario - pepe@assets.cu" id="userName">
+          <mat-error>El campo Nombre de usuario es obligatorio, y debe ser un correo electrónico válido</mat-error>
+        </mat-form-field>        
+        <mat-form-field class="">
+          <input matInput formControlName="password" type="password" required placeholder="Contraseña" id="password">
+          <mat-error>El campo contraseña es obligatorio</mat-error>
+        </mat-form-field>        
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" [routerLink]='["/register"]'>Registrarse</button> <button mat-raised-button color="primary" type="submit" (click)="onSave()">Acceder</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

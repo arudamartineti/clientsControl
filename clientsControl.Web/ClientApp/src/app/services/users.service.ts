@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from '../interfaces/user';
 import { Observable } from 'rxjs';
+import { IUserRole } from '../interfaces/user-role';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class UsersService {
 
   registerUser(user: IUser) : Observable<IUser> {
     return this.http.post<IUser>(this.baseUrl + "api/account/register", user);
+  }
+
+  setUserRoles(idUser: string, userRoles: IUserRole): Observable<IUser> {
+    return this.http.post<IUser>(this.apiUrl + '/' + idUser + '/roles', userRoles);
   }
 
   //authorizeUser(): Observable<IUser> {

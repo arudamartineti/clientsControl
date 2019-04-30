@@ -18,8 +18,9 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let row">
-        <button mat-icon-button color="primary" (click)="onAuthorize(row)"><mat-icon>launch</mat-icon></button>
-        <button mat-icon-button color="primary" (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
+        <button mat-icon-button color="primary" *ngIf="row.authorized"><mat-icon>check_circle</mat-icon></button>
+        <button mat-icon-button color="primary" (click)="onAuthorize(row)" *ngIf="row.authorized == false"><mat-icon>check_circle_outline</mat-icon></button>
+        <button mat-icon-button color="primary" (click)="onEdit(row)"><mat-icon>security</mat-icon></button>
         <button mat-icon-button color="warn" (click)="onDelete(row)"><mat-icon>delete_outline</mat-icon></button>
       </td>
     </ng-container>

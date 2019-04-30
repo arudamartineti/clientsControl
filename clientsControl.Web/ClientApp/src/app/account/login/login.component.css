@@ -1,0 +1,17 @@
+.loginCard {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.loginFormContainer > * {
+  width: 100%;
+}
+
+.button-row {
+  text-align: right;
+}
+
+.button-row > * {
+  margin-left: 4px;
+}

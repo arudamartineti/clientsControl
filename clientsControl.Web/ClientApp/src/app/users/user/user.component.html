@@ -1,3 +1,37 @@
-<p>
-  user works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <h2 mat-dialog-title>Detalles del Usuario</h2>
+    <h6>Usuario </h6> <span> {{ user.fullName }}</span>
+    <h6>Nombre de Usuario </h6> <span> {{ user.userName }}</span>
+    <h6>Correo Electrónico </h6> <span> {{ user.email }}</span>
+    <h6>Autorizado </h6> <span> <mat-icon *ngIf="user.authorized">check_circle</mat-icon> <mat-icon *ngIf="!user.authorized">check_circle_outline</mat-icon> </span>
+  </div>
+</div>
+<div class="row">
+  <h3>Roles</h3>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <form class="form" novalidate (ngSubmit)="save()" [formGroup]="formGroup">
+      <div class="" formArrayName="roles" *ngFor="let role of formGroup.controls.roles.controls; let i = index;">
+        <div class="row">
+          <mat-checkbox [formControlName]="i">{{ roles[i].name }}</mat-checkbox>
+        </div>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" (click)="onSave()">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<!--<form [formGroup]="form" (ngSubmit)="submit()">
+  <label formArrayName="orders" *ngFor="let order of form.controls.orders.controls; let i = index">
+    <input type="checkbox" [formControlName]="i">
+    {{orders[i].name}}
+  </label>
+
+  <button>submit</button>
+</form>-->
