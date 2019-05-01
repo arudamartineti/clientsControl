@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Clients\Commands\CreateClient\" />
-    <Folder Include="Configuration\" />
     <Folder Include="Licenses\Queries\GetAllDiscontinuedLicenses\" />
   </ItemGroup>
 

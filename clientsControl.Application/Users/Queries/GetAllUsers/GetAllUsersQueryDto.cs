@@ -13,5 +13,7 @@ namespace clientsControl.Application.Users.Queries.GetAllUsers
         public string PhoneNumber { set; get; }        
         public bool ClientUser { set; get; }
         public string ClientReup { set; get; }
+        public bool Authorized { set; get; }
+        public List<string> Roles { set; get; }
     }
 }

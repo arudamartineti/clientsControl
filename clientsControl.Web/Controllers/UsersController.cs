@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using clientsControl.Application.Users.Commands.AddRolesUser;
 using clientsControl.Application.Users.Commands.AuthorizeUser;
+using clientsControl.Application.Users.Queries.GetAllRoles;
 using clientsControl.Application.Users.Queries.GetAllUsers;
 using clientsControl.Application.Users.Queries.GetUser;
 using clientsControl.Domain.Entities;
@@ -33,5 +35,19 @@ namespace clientsControl.Web.Controllers
         {
             return Ok(await Mediator.Send(new AuthorizeUserCommand() { Id = id }));
         }
+
+
+        [HttpGet("roles")]
+        public async Task<ActionResult<IEnumerable<GetAllUsersQueryDto>>> getRoles()
+        {
+            return Ok(await Mediator.Send(new GetAllRolesQuery()));
+        }
+
+        [HttpPost("{id}/roles")]
+        public async Task<ActionResult<GetAllUsersQueryDto>> addRolesToUser(string Id, [FromBody]AddRolesUserCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
     }
 }

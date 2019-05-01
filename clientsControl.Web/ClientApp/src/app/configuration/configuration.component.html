@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2>Configuración</h2>
+  </div>
+  <div class="col-md-6 text-right">
+    <button mat-raised-button color="primary" type="submit" (click)="saveConfiguration()">Guardar</button>
+  </div>
+</div>
+
+<form class="form" novalidate (ngSubmit)="return" [formGroup]="formGroup">
+  <div class="configurationFormContainer col-md-6">
+    <mat-form-field class="">
+      <input matInput formControlName="generatedPaymentControlPath" type="text" required placeholder="Directorio de Generación de Controles de Pago" id="generatedPaymentControlPath">
+      <mat-error>El campo Directorio de Generación de Controles de Pago es obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input matInput formControlName="smtpServer" type="text" required placeholder="Servidor SMTP" id="smtpServer">
+      <mat-error>El campo Serivdor SMTP es obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input matInput formControlName="smtpPort" type="number" required placeholder="Puerto SMTP" id="smtpPort">
+      <mat-error>El campo Puerto SMTP es obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input matInput formControlName="stmpUser" type="text" placeholder="Usuario SMTP" id="stmpUser">
+      <mat-error></mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <input matInput formControlName="smtpPassword" type="password" placeholder="Contraseña SMTP" id="smtpPassword">
+      <mat-error></mat-error>
+    </mat-form-field>
+  </div>
+</form>

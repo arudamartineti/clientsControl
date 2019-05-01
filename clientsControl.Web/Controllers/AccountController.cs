@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using clientsControl.Application.Users.Commands.LoginUser;
+using clientsControl.Application.Users.Commands.LogoutUser;
 using clientsControl.Application.Users.Commands.RegisterUser;
 using clientsControl.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -29,6 +30,12 @@ namespace clientsControl.Web.Controllers
         public async Task<ActionResult> Login([FromBody]LoginUserCommand command)
         {
             return Ok(await Mediator.Send(command));
+        }
+
+        [HttpGet("logout")]
+        public async Task<ActionResult> Logout()
+        {
+            return Ok(await Mediator.Send(new LogoutUserCommand()));
         }
 
 

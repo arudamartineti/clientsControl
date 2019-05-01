@@ -100,6 +100,8 @@ namespace clientsControl.Web
                     fv.RegisterValidatorsFromAssemblyContaining<UpdateClientCommandValidator>();
                 });
 
+            services.AddSignalR();
+
             //comportamiento para suprimir el ModelState
             services.Configure<ApiBehaviorOptions>(options =>
             {
