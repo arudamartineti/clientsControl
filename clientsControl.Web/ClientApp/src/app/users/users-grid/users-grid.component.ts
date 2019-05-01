@@ -32,7 +32,7 @@ export class UsersGridComponent implements OnInit {
   onEdit(row) {
     const conf = new MatDialogConfig();
     conf.width = "40%";
-    //conf.maxHeight = "400px";
+    conf.maxHeight = "400px";
     conf.data = { editMode: true, userId: row['id'] };
 
     this.userDialog.open(UserComponent, conf).afterClosed().subscribe(close => { this.refreshDataSource(); });

@@ -100,15 +100,15 @@ export class LicenseComponent implements OnInit {
 
       let licenseDetail = this.formGroup.get('licenseDetails') as FormArray;
 
-      //console.log(license.licenseDetail.find(x => x.moduleId === module.id).licencias);
+      console.log(license);
           
       licenseDetail.push(this.formBuilder.group({
         id: '',
         moduleId: module.id,
         licenceId: license.id,
-        licencias: license.licenseDetail.find(x => x.moduleId === module.id).licencias,
-        pcAdicionales: license.licenseDetail.find(x => x.moduleId === module.id).pcAdicionales,
-        pcConsultas: license.licenseDetail.find(x => x.moduleId === module.id).pcConsultas,
+        licencias: license.licenseDetails.find(x => x.moduleId === module.id).licencias,
+        pcAdicionales: license.licenseDetails.find(x => x.moduleId === module.id).pcAdicionales,
+        pcConsultas: license.licenseDetails.find(x => x.moduleId === module.id).pcConsultas,
         moduleDescription: module.description,
         workStations: module.workStations
       }));

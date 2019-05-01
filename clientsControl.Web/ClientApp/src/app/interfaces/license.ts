@@ -11,5 +11,5 @@ export interface ILicense {
   versionId: string,        
   stockTypeId: string,
   clasificationId: string
-  licenseDetail: ILicenseDetail[]
+  licenseDetails: ILicenseDetail[]
 }
