@@ -63,7 +63,7 @@ export class UsersGridDataSource extends DataSource<IUser> {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'id': return compare(a.id, b.id, isAsc);
-        case 'userName': return compare(a.userName, b.userName, isAsc);
+        case 'userName': return compare(a.username, b.username, isAsc);
         case 'email': return compare(a.email, b.email, isAsc);
         case 'fullName': return compare(a.fullName, b.fullName, isAsc);
         case 'clientUser': return compare(a.clientUser, b.clientUser, isAsc);

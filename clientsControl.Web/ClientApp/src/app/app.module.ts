@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -49,6 +49,9 @@ import { LoginComponent } from './account/login/login.component';
 import { UsersService } from './services/users.service';
 import { RolesService } from './services/roles.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { AuthenticationGuardService } from './services/authentication-guard.service';
+import { AccountsService } from './services/accounts.service';
+import { AuthenticationInterceptorService } from './services/authentication-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'clients', component: ClientsComponent },
+      { path: 'clients', component: ClientsComponent, canActivate : [AuthenticationGuardService] },
       { path: 'assets-versions', component: AssetsVersionsComponent },
       { path: 'modules', component: ModulesComponent },
       { path: 'stock-types', component: StocktypesComponent },
@@ -92,7 +95,12 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     MatPaginatorModule, 
     MatSortModule,    
   ],
-  providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService, UsersService, RolesService],
+  providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService, UsersService, RolesService, AuthenticationGuardService, AccountsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent, PaymentComponent, PaymentClientComponent, ContactComponent, UserComponent]
 })

@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.formGroup = this.formBuider.group({
-      userName: '',
+      username: '',
       fullName: '',
       phoneNumber: '',
       password: '',
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
   onSave() {
     let user: IUser = Object.assign({}, this.formGroup.value);
 
-    user.email = user.userName;
+    user.email = user.username;
 
     this.usersServices.registerUser(user).subscribe(user => {
       this.notificacionUIService.success("El registro se realizó correctamente. Debe esperar confirmación por parte de nuestro personal");      

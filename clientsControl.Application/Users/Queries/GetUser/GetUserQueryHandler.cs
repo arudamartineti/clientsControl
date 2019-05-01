@@ -39,7 +39,7 @@ namespace clientsControl.Application.Users.Queries.GetUser
                 ClientUser = user.ClientUser,
                 FullName = user.FullName,
                 PhoneNumber = user.PhoneNumber,
-                UserName = user.UserName,
+                Username = user.UserName,
                 Authorized = user.ComercialAuthorized,
                 Roles = (List<string>)roles
             };

@@ -19,7 +19,7 @@ export class UsersGridComponent implements OnInit {
   constructor(private userService: UsersService, private confirmDialog: MatDialog, private notificacionUIService: NotificationUiService, private userDialog: MatDialog) { }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['userName', 'fullName', 'actions'];
+  displayedColumns = ['username', 'fullName', 'actions'];
 
   ngOnInit() {
     this.refreshDataSource();

@@ -38,7 +38,7 @@ namespace clientsControl.Application.Users.Commands.RegisterUser
             if (!result.Succeeded)
                 throw new UserRegisterException();
 
-            return new GetAllUsersQueryDto() { Id = user.Id, UserName = user.UserName, ClientReup = user.ClientReup, ClientUser = user.ClientUser, Email = user.Email, FullName = user.FullName, PhoneNumber = user.PhoneNumber  };
+            return new GetAllUsersQueryDto() { Id = user.Id, Username = user.UserName, ClientReup = user.ClientReup, ClientUser = user.ClientUser, Email = user.Email, FullName = user.FullName, PhoneNumber = user.PhoneNumber  };
         }
     }
 }

@@ -7,7 +7,7 @@ namespace clientsControl.Application.Users.Queries.GetAllUsers
     public class GetAllUsersQueryDto
     {
         public string Id { set; get; }
-        public string UserName { set; get; }
+        public string Username { set; get; }
         public string FullName { set; get; }
         public string Email { set; get; }
         public string PhoneNumber { set; get; }        

@@ -32,10 +32,4 @@ export class UsersService {
   setUserRoles(idUser: string, userRoles: IUserRole): Observable<IUser> {
     return this.http.post<IUser>(this.apiUrl + '/' + idUser + '/roles', userRoles);
   }
-
-  //authorizeUser(): Observable<IUser> {
-
-  //}
-
-
 }
