@@ -29,6 +29,7 @@ export class AccountsService {
   }
 
   logoutUser() {
+    this.http.get<any>(this.baseUrl + "api/account/logout");
     localStorage.removeItem("securityToken");
     localStorage.removeItem("secutiryTokenExpiration");
   }

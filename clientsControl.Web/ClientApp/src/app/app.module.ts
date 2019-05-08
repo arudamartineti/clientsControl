@@ -52,6 +52,11 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { AuthenticationGuardService } from './services/authentication-guard.service';
 import { AccountsService } from './services/accounts.service';
 import { AuthenticationInterceptorService } from './services/authentication-interceptor.service';
+import { HomeService } from './services/home.service';
+import { ContractsComponent } from './contracts/contracts.component';
+import { ContractComponent } from './contracts/contract/contract.component';
+import { ContractsGridComponent } from './contracts/contracts-grid/contracts-grid.component';
+import { ContractsService } from './services/contracts.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +70,7 @@ import { AuthenticationInterceptorService } from './services/authentication-inte
     MenuComponent,
     ClientComponent,    
     AssetsVersionsComponent,    
-    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent, ContactsComponent, ContactComponent, ContactsGridComponent, UsersComponent, UsersGridComponent, UserComponent, RegisterComponent, LoginComponent, ConfigurationComponent         
+    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent, ContactsComponent, ContactComponent, ContactsGridComponent, UsersComponent, UsersGridComponent, UserComponent, RegisterComponent, LoginComponent, ConfigurationComponent, ContractsComponent, ContractComponent, ContractsGridComponent         
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -95,13 +100,13 @@ import { AuthenticationInterceptorService } from './services/authentication-inte
     MatPaginatorModule, 
     MatSortModule,    
   ],
-  providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService, UsersService, RolesService, AuthenticationGuardService, AccountsService,
+  providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService, UsersService, RolesService, AuthenticationGuardService, AccountsService, HomeService, ContractsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptorService,
       multi: true
     }],
   bootstrap: [AppComponent],
-  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent, PaymentComponent, PaymentClientComponent, ContactComponent, UserComponent]
+  entryComponents: [ClientComponent, AssetsVersionComponent, ModuleComponent, StocktypeComponent, LicenseComponent, ConfirmationDialogComponent, PaymentComponent, PaymentClientComponent, ContactComponent, UserComponent, ContractComponent]
 })
 export class AppModule { }
