@@ -92,6 +92,7 @@ import { ContractsService } from './services/contracts.service';
       { path: 'users', component: UsersComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'contracts', component: ContractsComponent },
       { path: 'configuration', component: ConfigurationComponent },
     ]),
     BrowserAnimationsModule,

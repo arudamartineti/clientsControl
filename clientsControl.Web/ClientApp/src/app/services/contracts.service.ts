@@ -17,6 +17,10 @@ export class ContractsService {
     return this.http.get<IContract[]>(this.apiUrl);
   }
 
+  getCotnractsClient(idClient: string): Observable<IContract[]> {
+    return this.http.get<IContract[]>(this.apiUrl + '/client/' + idClient);
+  }
+
   getContract(id: string): Observable<IContract> {
     return this.http.get<IContract>(this.apiUrl + "/" +  id);
   }

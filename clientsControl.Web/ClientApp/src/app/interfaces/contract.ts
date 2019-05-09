@@ -15,7 +15,7 @@ export interface IContract {
   importeLicenciasCUC: number,
   importeLicenciasMN: number,
   importePostVentaCUC: number,
-  improtePostVentaMN: number,
+  importePostVentaMN: number,
   mesInicioPostVenta: number,
   mesFinalPostVenta: number,
   anoFinalPostVenta: number,

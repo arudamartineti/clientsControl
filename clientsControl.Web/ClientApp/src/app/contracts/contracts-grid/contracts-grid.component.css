@@ -1,3 +1,101 @@
 .full-width-table {
   width: 100%;
+  overflow-x: auto;
 }
+
+.search-div {
+  text-align: right;
+  padding: 6px;
+}
+
+.search-form-field {
+  width: 60%;
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #f5f5f5;
+  border-radius: 1px;
+}
+
+  .search-form-field div.mat-form-field-underline {
+    display: none;
+  }
+
+  .search-form-field div.mat-form-field-infix {
+    border-top: 0px;
+  }
+
+  .search-form-field div.mat-form-field-wrapper {
+    padding-bottom: 0px;
+  }
+
+  .search-form-field div.mat-form-field-suffix button {
+    height: 32px;
+    width: 32px;
+  }
+
+.table-container {
+  /*height: 400px;*/
+  width:100%;
+  overflow: auto;
+}
+
+td.mat-column-numero {
+  width: 180px;
+  padding-right: 8px;
+}
+
+td.mat-column-definition {
+  width: 40px;
+  padding-right: 8px;
+}
+
+td.mat-column-client {
+  width: 380px;
+  padding-right: 8px;
+}
+
+td.mat-column-fechaFirma {
+  width: 90px;
+  padding-right: 8px;
+}
+
+td.mat-column-fechaRecibido {
+  width: 90px;
+  padding-right: 8px;
+}
+
+td.mat-column-fechaEntrega {
+  width: 90px;
+  padding-right: 8px;
+}
+
+
+td.mat-column-objeto {
+  width: 1200px;
+  padding-right: 8px;
+  text-wrap:none;
+}
+
+td.mat-column-master {
+  width: 1900px;
+  padding-right: 8px;
+  text-wrap: none;
+}
+
+td.mat-column-actions {
+  width: 120px;
+  padding-right: 8px;
+  text-align:right;
+}
+
+/*th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+.mat-table-sticky:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky:last-child {
+  border-left: 1px solid #e0e0e0;
+}*/
