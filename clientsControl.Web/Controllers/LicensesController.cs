@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace clientsControl.Web.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrador")]
     public class LicensesController : BaseController
     {
         [HttpGet]

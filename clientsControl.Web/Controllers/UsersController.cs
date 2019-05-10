@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using clientsControl.Application.Users.Commands.AddRolesUser;
 using clientsControl.Application.Users.Commands.AuthorizeUser;
+using clientsControl.Application.Users.Queries.GetAllInstallers;
 using clientsControl.Application.Users.Queries.GetAllRoles;
 using clientsControl.Application.Users.Queries.GetAllUsers;
 using clientsControl.Application.Users.Queries.GetUser;
@@ -21,6 +22,12 @@ namespace clientsControl.Web.Controllers
         public async Task<ActionResult<IEnumerable<GetAllUsersQueryDto>>> getUsers()
         {
             return Ok(await Mediator.Send(new GetAllUsersQuery()));
+        }
+
+        [HttpGet("instaladores")]
+        public async Task<ActionResult<IEnumerable<GetAllUsersQueryDto>>> getInstaladores()
+        {
+            return Ok(await Mediator.Send(new GetAllInstallersQuery()));
         }
 
 

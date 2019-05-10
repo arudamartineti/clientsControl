@@ -6,6 +6,9 @@
 
   <ItemGroup>
     <Folder Include="Assets\" />
+    <Folder Include="Email\" />
+    <Folder Include="Jabber\" />
+    <Folder Include="Notifications\" />
   </ItemGroup>
 
   <ItemGroup>

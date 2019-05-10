@@ -21,6 +21,7 @@ namespace clientsControl.Persistence.Configurations
 
             builder.HasMany(c => c.LicenseClasifications).WithOne(c => c.Client).OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(c => c.Contacts).WithOne(c => c.Client).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(c => c.Contracts).WithOne(c => c.Client).OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(c => c.AssetsCode).IsRequired(false);
         }

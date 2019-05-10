@@ -30,6 +30,7 @@ namespace clientsControl.Persistence
         public DbSet<Module> Module { set; get; }
         public DbSet<PaymentControl> PaymentControls { set; get; }
         public DbSet<StockType> StockTypes { set; get; }
+        public DbSet<Contract> Contracts { set; get; }        
 
     }
 }

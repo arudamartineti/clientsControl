@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using clientsControl.Persistence;
 
 namespace clientsControl.Persistence.Migrations
 {
     [DbContext(typeof(clientsControlDbContext))]
-    partial class clientsControlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190508133340_nameimporte")]
+    partial class nameimporte
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -175,8 +177,6 @@ namespace clientsControl.Persistence.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<Guid?>("SupportDayPlanificationId");
-
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
@@ -191,8 +191,6 @@ namespace clientsControl.Persistence.Migrations
                         .IsUnique()
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("SupportDayPlanificationId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -547,49 +545,6 @@ namespace clientsControl.Persistence.Migrations
                     b.ToTable("StockTypes");
                 });
 
-            modelBuilder.Entity("clientsControl.Domain.Entities.SupportDayPlanification", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ApplicationUserId");
-
-                    b.Property<DateTime>("DateSupport");
-
-                    b.Property<bool>("NotWorkHolliday");
-
-                    b.Property<Guid>("SupportPlanificationId");
-
-                    b.HasKey("Id")
-                        .HasAnnotation("SqlServer:Clustered", true);
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("SupportPlanificationId");
-
-                    b.ToTable("SupportDayPlanification");
-                });
-
-            modelBuilder.Entity("clientsControl.Domain.Entities.SupportPlanification", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Confirmed")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValue(false);
-
-                    b.Property<byte>("Month")
-                        .HasMaxLength(12);
-
-                    b.Property<int>("Year");
-
-                    b.HasKey("Id")
-                        .HasAnnotation("SqlServer:Clustered", true);
-
-                    b.ToTable("SupportPlanification");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -633,13 +588,6 @@ namespace clientsControl.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("clientsControl.Domain.Entities.ApplicationUser", b =>
-                {
-                    b.HasOne("clientsControl.Domain.Entities.SupportDayPlanification")
-                        .WithMany("Installers")
-                        .HasForeignKey("SupportDayPlanificationId");
                 });
 
             modelBuilder.Entity("clientsControl.Domain.Entities.Contact", b =>
@@ -729,18 +677,6 @@ namespace clientsControl.Persistence.Migrations
                     b.HasOne("clientsControl.Domain.Entities.License", "License")
                         .WithMany("PaymentsControl")
                         .HasForeignKey("LicenceId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("clientsControl.Domain.Entities.SupportDayPlanification", b =>
-                {
-                    b.HasOne("clientsControl.Domain.Entities.ApplicationUser")
-                        .WithMany("SupportDays")
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.HasOne("clientsControl.Domain.Entities.SupportPlanification", "SupportPlanification")
-                        .WithMany("DayPlanifications")
-                        .HasForeignKey("SupportPlanificationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -15,6 +15,8 @@ namespace clientsControl.Persistence.Configurations
             builder.Property(c => c.ComercialAuthorized).HasDefaultValue(false);
             builder.Property(c => c.ClientUser).HasDefaultValue(false);
             builder.Property(c => c.ClientReup).IsRequired(false);
+
+            builder.HasMany(c => c.SupportDays);
         }
     }
 }

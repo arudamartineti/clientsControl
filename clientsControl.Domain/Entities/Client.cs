@@ -12,6 +12,7 @@ namespace clientsControl.Domain.Entities
             Contacts = new HashSet<Contact>();
             LicenseClasifications = new HashSet<LicenseClientClasification>();
             Licenses = new HashSet<License>();
+            Contracts = new HashSet<Contract>();
         }
 
         public Guid Id { get; set; }
@@ -22,6 +23,6 @@ namespace clientsControl.Domain.Entities
         public ICollection<Contact> Contacts {get; private set;}
         public ICollection<LicenseClientClasification> LicenseClasifications { get; private set; }
         public ICollection<License> Licenses { get; private set; }
-
+        public ICollection<Contract> Contracts { get; private set; }
     }
 }

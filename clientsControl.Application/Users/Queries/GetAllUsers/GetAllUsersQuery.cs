@@ -7,6 +7,7 @@ namespace clientsControl.Application.Users.Queries.GetAllUsers
 {
     public class GetAllUsersQuery : IRequest<IEnumerable<GetAllUsersQueryDto>>
     {
+
     }
 
 }

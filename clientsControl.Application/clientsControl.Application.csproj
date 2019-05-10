@@ -7,6 +7,8 @@
   <ItemGroup>
     <Folder Include="Clients\Commands\CreateClient\" />
     <Folder Include="Licenses\Queries\GetAllDiscontinuedLicenses\" />
+    <Folder Include="SupportPlanification\Commands\" />
+    <Folder Include="SupportPlanification\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

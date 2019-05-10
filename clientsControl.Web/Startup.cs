@@ -59,11 +59,11 @@ namespace clientsControl.Web
                     options.Password.RequireUppercase = false;
                     options.Password.RequireNonAlphanumeric = false;
                     options.User.RequireUniqueEmail = true;                    
-                })
+                })                
                 .AddEntityFrameworkStores<clientsControlDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders().AddRoles<IdentityRole>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)                
                 .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters()
                     {                        
                         ValidateIssuer = true,
@@ -73,7 +73,7 @@ namespace clientsControl.Web
                         ValidIssuer = "yourdomain.com",
                         ValidAudience = "yourdomain.com",
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecretKey"])),
-                        ClockSkew = TimeSpan.Zero
+                        ClockSkew = TimeSpan.Zero                        
                     }
                 );
 
@@ -131,7 +131,7 @@ namespace clientsControl.Web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();            
             app.UseAuthentication();
 
             app.UseMvc(routes =>
