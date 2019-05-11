@@ -84,9 +84,8 @@ export class ContractsGridDataSource extends DataSource<IContract> {
         case 'importeLicenciasMN': return compare(+a.importeLicenciasMN, +b.importeLicenciasMN, isAsc);
         case 'importePostVentaCUC': return compare(+a.importePostVentaCUC, +b.importePostVentaCUC, isAsc);
         case 'importePostVentaMN': return compare(+a.importePostVentaMN, +b.importePostVentaMN, isAsc);
-        case 'mesInicioPostVenta': return compare(+a.mesInicioPostVenta, +b.mesInicioPostVenta, isAsc);
-        case 'mesFinalPostVenta': return compare(+a.mesFinalPostVenta, +b.mesFinalPostVenta, isAsc);
-        case 'anoFinalPostVenta': return compare(+a.anoFinalPostVenta, +b.anoFinalPostVenta, isAsc);
+        case 'inicioPostVenta': return compare(a.inicioPostVenta, b.inicioPostVenta, isAsc);
+        case 'finalPostVenta': return compare(a.finalPostVenta, b.finalPostVenta, isAsc);        
         case 'master': return compare(a.suplemento, b.suplemento, isAsc);        
         case 'discontinued': return compare(a.id, b.id, isAsc);
         default: return 0;

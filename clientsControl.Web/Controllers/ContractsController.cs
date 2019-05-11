@@ -36,9 +36,9 @@ namespace clientsControl.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(CreateContractCommand command)
+        public async Task<IActionResult> Add([FromBody]CreateContractCommand command)
         {
-            return Ok(await Mediator.Send(command));
+                return Ok(await Mediator.Send(command));
         }
 
         [HttpPost("discontinue/{id}")]
@@ -48,7 +48,7 @@ namespace clientsControl.Web.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Guid Id, UpdateContractCommand command)
+        public async Task<IActionResult> Update(Guid Id, [FromBody]UpdateContractCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

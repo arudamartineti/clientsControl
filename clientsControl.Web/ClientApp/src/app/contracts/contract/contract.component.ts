@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ContractsService } from '../../services/contracts.service';
 import { IClient } from '../../interfaces/client';
 import { ClientsService } from '../../services/clients.service';
 import { IUser } from '../../interfaces/user';
 import { UsersService } from '../../services/users.service';
+import { IContract } from '../../interfaces/contract';
+import { NotificationUiService } from '../../services/notification-ui.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-contract',
@@ -19,7 +22,7 @@ export class ContractComponent implements OnInit {
   clients: IClient[];
   installers: IUser[];
 
-  constructor(private contractsServices: ContractsService, private formBuilder: FormBuilder, private clientsService: ClientsService, private usersService: UsersService) { }
+  constructor(private contractsServices: ContractsService, private formBuilder: FormBuilder, private clientsService: ClientsService, private usersService: UsersService, public notificationService: NotificationUiService, public dialogRef: MatDialogRef<ContractComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
 
@@ -36,7 +39,7 @@ export class ContractComponent implements OnInit {
       fechaEntrega: '',
       fechaFirma: '',
       fechaRecibido: '',
-      idInstalador: '',
+      idInstalador: null,
       ubicacion: '',
       objeto: '',
       importeLicenciasCUC: 0,
@@ -47,6 +50,21 @@ export class ContractComponent implements OnInit {
       finalPostVenta: '',
       master: ''
     });
+  }
+
+  onSave() {
+    let contract: IContract = Object.assign({}, this.formGroup.value);
+
+    if (this.editMode) {
+      this.contractsServices.updateContract(this.contractId, contract).subscribe(contract => { this.onSaveSuccess(); }, error => console.log(error));
+    } else {
+      this.contractsServices.createContract(contract).subscribe(contract => { this.onSaveSuccess(); }, error => console.log(error));
+    }
+  }
+
+  onSaveSuccess(msg: string = 'Operación completada') {
+    this.dialogRef.close();
+    this.notificationService.success(msg);
   }
 
 }

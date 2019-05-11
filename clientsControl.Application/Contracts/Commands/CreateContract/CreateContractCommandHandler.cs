@@ -53,7 +53,8 @@ namespace clientsControl.Application.Contracts.Commands.CreateContract
                     Ubicacion = request.Ubicacion
                 };
 
-            await db.Contracts.AddAsync(contrato, cancellationToken);
+            db.Contracts.Add(contrato);
+            await db.SaveChangesAsync(cancellationToken);            
 
             return mapper.Map<ContractDto>(contrato);
         }
