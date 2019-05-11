@@ -50,6 +50,36 @@ export class ContractComponent implements OnInit {
       finalPostVenta: '',
       master: ''
     });
+
+    if (this.data != null && this.data['editMode'] == true) {
+      this.editMode = true;
+      this.contractId = this.data['contractId'];
+
+      this.contractsServices.getContract(this.contractId).subscribe(contract => { this.loadFrom(contract); }, error => console.log(error));
+    }
+  }
+
+  loadFrom(contract: IContract) {
+    this.formGroup.patchValue({
+      id: contract.id,
+      clientId: contract.clientId,
+      numero: contract.numero,
+      suplemento: contract.suplemento,
+      numeroSuplement: contract.numeroSuplement,
+      fechaEntrega: contract.fechaEntrega,
+      fechaFirma: contract.fechaFirma,
+      fechaRecibido: contract.fechaRecibido,
+      idInstalador: contract.idInstalador,
+      ubicacion: contract.ubicacion,
+      objeto: contract.objeto,
+      importeLicenciasCUC: contract.importeLicenciasCUC,
+      importeLicenciasMN: contract.importeLicenciasMN,
+      importePostVentaCUC: contract.importePostVentaCUC,
+      importePostVentaMN: contract.importePostVentaMN,
+      inicioPostVenta: contract.inicioPostVenta,
+      finalPostVenta: contract.finalPostVenta,
+      master: contract.master
+    });
   }
 
   onSave() {

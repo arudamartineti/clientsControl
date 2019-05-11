@@ -55,7 +55,7 @@ namespace clientsControl.Application.Contracts.Queries.GetContract
                     ImporteLicenciasCUC = contract.ImporteLicenciasCUC,
                     ImporteLicenciasMN = contract.ImporteLicenciasMN,
                     ImportePostVentaCUC = contract.ImportePostVentaCUC,
-                    ImprotePostVentaMN = contract.ImportePostVentaMN
+                    ImportePostVentaMN = contract.ImportePostVentaMN
                 };
 
 

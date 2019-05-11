@@ -40,14 +40,14 @@ namespace clientsControl.Web.Controllers
         {
                 return Ok(await Mediator.Send(command));
         }
-
-        [HttpPost("discontinue/{id}")]
+        
+        [HttpPut("discontinue/{id}")]
         public async Task<IActionResult> Discontinue(Guid Id)
         {
             return Ok(await Mediator.Send(new DiscontinueContractCommand() { Id = Id }));
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid Id, [FromBody]UpdateContractCommand command)
         {
             return Ok(await Mediator.Send(command));

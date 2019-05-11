@@ -38,6 +38,6 @@ export class ContractsService {
   }
 
   discontinueContract(id: string): Observable<any> {
-    return this.http.post(this.apiUrl + "/discontinue", id);
+    return this.http.put(this.apiUrl + "/discontinue/" + id, {});
   }  
 }

@@ -42,7 +42,7 @@
     </div>
     <div class="row">
       <mat-form-field class="col-md-5">
-        <mat-select formControlName="clientId" placeholder="Instalador" id="idInstalador">
+        <mat-select formControlName="idInstalador" placeholder="Instalador" id="idInstalador">
           <mat-option *ngFor="let installer of installers" [value]="installer.id">
             {{installer.fullName}}
           </mat-option>
@@ -56,7 +56,7 @@
     <div class="row">
       <div class="col-md-12">
         <textarea matInput placeholder="Objeto del contrato" formControlName="objeto" id="objeto" required></textarea>
-        <mat-error>Debe especificar el campo objeto del contrato</mat-error>
+        <!--<mat-error>Debe especificar el campo objeto del contrato</mat-error>-->
       </div>
     </div>
     <div class="row">

@@ -25,7 +25,7 @@ namespace clientsControl.Application.Contracts.Queries.GetAllContracts
         public decimal ImporteLicenciasCUC { set; get; }
         public decimal ImporteLicenciasMN { set; get; }
         public decimal ImportePostVentaCUC { set; get; }
-        public decimal ImprotePostVentaMN { set; get; }
+        public decimal ImportePostVentaMN { set; get; }
         public DateTime? InicioPostVenta { set; get; }
         public DateTime? FinalPostVenta { set; get; }
         public string Master { set; get; }
