@@ -12,7 +12,7 @@ namespace clientsControl.Persistence.Configurations
         public void Configure(EntityTypeBuilder<SupportPlanification> builder)
         {
             builder.HasKey(c => c.Id).ForSqlServerIsClustered(true);
-            builder.Property(c => c.Month).HasMaxLength(12);
+            //builder.Property(c => c.Month).HasMaxLength(12);
             builder.Property(c => c.Confirmed).HasDefaultValue(false);
         }
     }

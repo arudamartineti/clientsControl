@@ -11,8 +11,7 @@ namespace clientsControl.Domain.Entities
             DayPlanifications = new HashSet<SupportDayPlanification>();
         }
         public Guid Id { set; get; }
-        public byte Month { set; get; }
-        public int Year { set; get; }
+        public DateTime PlanificationDate { set; get; }
         public bool Confirmed { set; get; }
         public ICollection<SupportDayPlanification> DayPlanifications { private set; get; }
     }

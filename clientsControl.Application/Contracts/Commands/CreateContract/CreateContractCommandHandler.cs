@@ -33,8 +33,7 @@ namespace clientsControl.Application.Contracts.Commands.CreateContract
             var contrato = new Contract()
                 {
                     Id = Guid.NewGuid(),
-                    ClientId = request.ClientId,
-                    AnoFinalPostVenta = request.AnoFinalPostVenta,
+                    ClientId = request.ClientId,                    
                     Discontinued = false,
                     FechaEntrega = request.FechaEntrega,
                     FechaFirma = request.FechaFirma,
@@ -45,8 +44,8 @@ namespace clientsControl.Application.Contracts.Commands.CreateContract
                     ImportePostVentaCUC = request.ImportePostVentaCUC,
                     ImportePostVentaMN = request.ImportePostVentaMN,
                     Master = request.Master,
-                    MesFinalPostVenta = request.MesFinalPostVenta,
-                    MesInicioPostVenta = request.MesInicioPostVenta,
+                    InicioPostVenta = request.InicioPostVenta,
+                    FinalPostVenta = request.FinalPostVenta,
                     Numero = request.Numero,
                     NumeroSuplement = request.NumeroSuplement,
                     Objeto = request.Objeto,

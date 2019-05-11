@@ -35,9 +35,8 @@ namespace clientsControl.Persistence.Configurations
             builder.Property(c => c.ImportePostVentaCUC).HasDefaultValue(0);
             builder.Property(c => c.ImportePostVentaMN).HasDefaultValue(0);
 
-            builder.Property(c => c.MesInicioPostVenta).IsRequired(false).HasMaxLength(12);
-            builder.Property(c => c.MesFinalPostVenta).IsRequired(false).HasMaxLength(12);
-            builder.Property(c => c.AnoFinalPostVenta).IsRequired(false);
+            builder.Property(c => c.InicioPostVenta).IsRequired(false);
+            builder.Property(c => c.FinalPostVenta).IsRequired(false);            
 
             builder.Property(c => c.Master).IsRequired(false).HasMaxLength(2048);
 

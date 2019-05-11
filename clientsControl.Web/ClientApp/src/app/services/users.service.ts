@@ -21,6 +21,10 @@ export class UsersService {
     return this.http.get<IUser>(this.apiUrl + '/' + id);
   }
 
+  getInstaladores(): Observable<IUser[]> {
+    return this.http.get<IUser[]>(this.apiUrl + '/instaladores');
+  }
+
   authorizeUser(id: string, user: IUser): Observable<boolean> {
     return this.http.put<boolean>(this.apiUrl + '/' + id, user);
   }

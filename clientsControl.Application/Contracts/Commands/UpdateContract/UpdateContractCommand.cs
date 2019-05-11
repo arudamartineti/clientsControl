@@ -24,9 +24,8 @@ namespace clientsControl.Application.Contracts.Commands.UpdateContract
         public decimal ImporteLicenciasMN { set; get; }
         public decimal ImportePostVentaCUC { set; get; }
         public decimal ImportePostVentaMN { set; get; }
-        public byte? MesInicioPostVenta { set; get; }
-        public byte? MesFinalPostVenta { set; get; }
-        public byte? AnoFinalPostVenta { set; get; }
+        public DateTime? InicioPostVenta { set; get; }
+        public DateTime? FinalPostVenta { set; get; }
         public string Master { set; get; }        
         public bool Discontinued { set; get; }
     }

@@ -56,7 +56,8 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "typescript": "~3.2.4",
-    "webpack": "^4.29.6"
+    "webpack": "^4.29.6",
+    "date-fns": "1.29.0"
   },
   "optionalDependencies": {
     "node-sass": "^4.9.3",

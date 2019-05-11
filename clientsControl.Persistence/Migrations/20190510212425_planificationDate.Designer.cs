@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using clientsControl.Persistence;
 
 namespace clientsControl.Persistence.Migrations
 {
     [DbContext(typeof(clientsControlDbContext))]
-    partial class clientsControlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190510212425_planificationDate")]
+    partial class planificationDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -304,6 +306,8 @@ namespace clientsControl.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<byte?>("AnoFinalPostVenta");
+
                     b.Property<Guid>("ClientId");
 
                     b.Property<bool>("Discontinued")
@@ -315,8 +319,6 @@ namespace clientsControl.Persistence.Migrations
                     b.Property<DateTime?>("FechaFirma");
 
                     b.Property<DateTime?>("FechaRecibido");
-
-                    b.Property<DateTime?>("FinalPostVenta");
 
                     b.Property<string>("IdInstalador");
 
@@ -336,10 +338,14 @@ namespace clientsControl.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(0m);
 
-                    b.Property<DateTime?>("InicioPostVenta");
-
                     b.Property<string>("Master")
                         .HasMaxLength(2048);
+
+                    b.Property<byte?>("MesFinalPostVenta")
+                        .HasMaxLength(12);
+
+                    b.Property<byte?>("MesInicioPostVenta")
+                        .HasMaxLength(12);
 
                     b.Property<string>("Numero")
                         .IsRequired()

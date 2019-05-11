@@ -24,7 +24,7 @@ import { NotificationUiService } from './services/notification-ui.service';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { ModulesComponent } from './modules/modules.component';
 import { ModulesGridComponent } from './modules/modules-grid/modules-grid.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, DateAdapter } from '@angular/material';
 import { ModulesService } from './services/modules.service';
 import { ModuleComponent } from './modules/module/module.component';
 import { StocktypesComponent } from './stocktypes/stocktypes.component';
@@ -57,6 +57,9 @@ import { ContractsComponent } from './contracts/contracts.component';
 import { ContractComponent } from './contracts/contract/contract.component';
 import { ContractsGridComponent } from './contracts/contracts-grid/contracts-grid.component';
 import { ContractsService } from './services/contracts.service';
+import { SupportPlanificationComponent } from './support-planification/support-planification.component';
+import { CalendarModule, DateAdapter as DateAdapterCalendar } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns'; 
 
 @NgModule({
   declarations: [
@@ -70,10 +73,11 @@ import { ContractsService } from './services/contracts.service';
     MenuComponent,
     ClientComponent,    
     AssetsVersionsComponent,    
-    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent, ContactsComponent, ContactComponent, ContactsGridComponent, UsersComponent, UsersGridComponent, UserComponent, RegisterComponent, LoginComponent, ConfigurationComponent, ContractsComponent, ContractComponent, ContractsGridComponent         
+    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent, ContactsComponent, ContactComponent, ContactsGridComponent, UsersComponent, UsersGridComponent, UserComponent, RegisterComponent, LoginComponent, ConfigurationComponent, ContractsComponent, ContractComponent, ContractsGridComponent, SupportPlanificationComponent         
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    CalendarModule.forRoot({ provide: DateAdapterCalendar, useFactory: adapterFactory }),
     HttpClientModule,
     FormsModule,
     MaterialModule,
@@ -94,6 +98,7 @@ import { ContractsService } from './services/contracts.service';
       { path: 'register', component: RegisterComponent },
       { path: 'contracts', component: ContractsComponent },
       { path: 'configuration', component: ConfigurationComponent },
+      { path: 'support-planification', component: SupportPlanificationComponent },
     ]),
     BrowserAnimationsModule,
     LayoutModule,

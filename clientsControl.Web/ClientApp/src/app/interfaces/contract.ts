@@ -16,9 +16,8 @@ export interface IContract {
   importeLicenciasMN: number,
   importePostVentaCUC: number,
   importePostVentaMN: number,
-  mesInicioPostVenta: number,
-  mesFinalPostVenta: number,
-  anoFinalPostVenta: number,
+  inicioPostVenta: Date,
+  finalPostVenta: Date,  
   master: string,
   discontinued: boolean
 }

@@ -30,7 +30,7 @@ namespace clientsControl.Application.Contracts.Commands.UpdateContract
             if (contract == null)
                 throw new NotFoundException(nameof(Contract), request.Id);
 
-            contract.AnoFinalPostVenta = request.AnoFinalPostVenta;
+            
             contract.Discontinued = false;
             contract.FechaEntrega = request.FechaEntrega;
             contract.FechaFirma = request.FechaFirma;
@@ -41,8 +41,8 @@ namespace clientsControl.Application.Contracts.Commands.UpdateContract
             contract.ImportePostVentaCUC = request.ImportePostVentaCUC;
             contract.ImportePostVentaMN = request.ImportePostVentaMN;
             contract.Master = request.Master;
-            contract.MesFinalPostVenta = request.MesFinalPostVenta;
-            contract.MesInicioPostVenta = request.MesInicioPostVenta;
+            contract.InicioPostVenta = request.InicioPostVenta;
+            contract.FinalPostVenta = request.FinalPostVenta;
             contract.Numero = request.Numero;
             contract.NumeroSuplement = request.NumeroSuplement;
             contract.Objeto = request.Objeto;

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using clientsControl.Persistence;
 
 namespace clientsControl.Persistence.Migrations
 {
     [DbContext(typeof(clientsControlDbContext))]
-    partial class clientsControlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190511043614_InicioFinalPostventa")]
+    partial class InicioFinalPostventa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

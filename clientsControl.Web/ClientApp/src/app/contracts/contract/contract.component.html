@@ -1,3 +1,101 @@
-<p>
-  contract works!
-</p>
+<h2 mat-dialog-title>Contrato</h2>
+<form class="form" novalidate (ngSubmit)="Save()" [formGroup]="formGroup">
+  <div class="contractFormContainer">
+    <div class="row">
+      <mat-form-field class="col-md-12">
+        <mat-select formControlName="clientId" required placeholder="Cliente" id="clientId">
+          <mat-option *ngFor="let client of clients" [value]="client.id">
+            {{client.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-md-5">
+        <input matInput formControlName="numero" type="text" required placeholder="Número de Contrato" id="numero">
+        <mat-error>El campo número de contrato no puede ser vacio</mat-error>
+      </mat-form-field>
+      <div class="col-md-2">
+        <mat-checkbox formControlName="suplemento" id="suplemento">Suplemento</mat-checkbox>
+      </div>
+      <mat-form-field class="col-md-5">
+        <input matInput formControlName="numeroSuplement" type="number" placeholder="Número de Suplemento" id="numeroSuplement">
+        <mat-error>El campo número de suplemento no debe ser vacío</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-md-4">
+        <input matInput [matDatepicker]="pickerForfechaEntrega" placeholder="Fecha de Entrega" formControlName="fechaEntrega" id="fechaEntrega">
+        <mat-datepicker-toggle matSuffix [for]="pickerForfechaEntrega"></mat-datepicker-toggle>
+        <mat-datepicker #pickerForfechaEntrega></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="col-md-4">
+        <input matInput [matDatepicker]="pickerForfechaRecibido" placeholder="Fecha de Recibo" formControlName="fechaRecibido" id="fechaRecibido">
+        <mat-datepicker-toggle matSuffix [for]="pickerForfechaRecibido"></mat-datepicker-toggle>
+        <mat-datepicker #pickerForfechaRecibido></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="col-md-4">
+        <input matInput [matDatepicker]="pickerForfechaFirma" placeholder="Fecha de Firma" formControlName="fechaFirma" id="fechaFirma">
+        <mat-datepicker-toggle matSuffix [for]="pickerForfechaFirma"></mat-datepicker-toggle>
+        <mat-datepicker #pickerForfechaFirma></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-md-5">
+        <mat-select formControlName="clientId" placeholder="Instalador" id="idInstalador">
+          <mat-option *ngFor="let installer of installers" [value]="installer.id">
+            {{installer.fullName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-md-7">
+        <input matInput formControlName="ubicacion" type="text" placeholder="Ubicación" id="ubicacion">
+        <mat-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <textarea matInput placeholder="Objeto del contrato" formControlName="objeto" id="objeto" required></textarea>
+        <mat-error>Debe especificar el campo objeto del contrato</mat-error>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-md-3">
+        <input matInput formControlName="importeLicenciasCUC" type="number" placeholder="Importe Licencias CUC" id="importeLicenciasCUC">
+        <mat-error></mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-md-3">
+        <input matInput formControlName="importeLicenciasMN" type="number" placeholder="Importe Licencias MN" id="importeLicenciasMN">
+        <mat-error></mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-md-3">
+        <input matInput formControlName="importePostVentaCUC" type="number" placeholder="Importe PostVenta CUC" id="importePostVentaCUC">
+        <mat-error></mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-md-3">
+        <input matInput formControlName="importePostVentaMN" type="number" placeholder="Importe PostVenta MN" id="importePostVentaMN">
+        <mat-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-md-4">
+        <input matInput [matDatepicker]="pickerForinicioPostVenta" placeholder="Inicio de Postventa" formControlName="inicioPostVenta" id="inicioPostVenta">
+        <mat-datepicker-toggle matSuffix [for]="pickerForinicioPostVenta"></mat-datepicker-toggle>
+        <mat-datepicker #pickerForinicioPostVenta></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="col-md-4">
+        <input matInput [matDatepicker]="pickerForfinalPostVenta" placeholder="Final de Postventa" formControlName="finalPostVenta" id="finalPostVenta">
+        <mat-datepicker-toggle matSuffix [for]="pickerForfinalPostVenta"></mat-datepicker-toggle>
+        <mat-datepicker #pickerForfinalPostVenta></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <textarea matInput placeholder="Master" formControlName="master" id="master"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" (click)="onSave()">Guardar</button>
+  </div>
+</form>
