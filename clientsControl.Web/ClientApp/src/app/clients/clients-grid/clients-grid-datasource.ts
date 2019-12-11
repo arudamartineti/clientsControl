@@ -5,23 +5,6 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 import { IClient } from '../../interfaces/client';
 import { ClientsService } from '../../services/clients.service';
 
-// TODO: Replace this with your own data model type
-//export interface ClientsGridItem {
-//  name: string;
-//  id: number;
-//}
-
-// TODO: replace this with real data from your application
-//const EXAMPLE_DATA: IClient[] = [
-//  { id: 1, description:'Hydrogen', code:"COD" },
-//  {id: 2, description: 'Helium', code:"COD1"}
-//];
-
-/**
- * Data source for the ClientsGrid view. This class should
- * encapsulate all logic for fetching and manipulating the displayed data
- * (including sorting, pagination, and filtering).
- */
 export class ClientsGridDataSource extends DataSource<IClient> {
   data: IClient[];
 
@@ -79,6 +62,7 @@ export class ClientsGridDataSource extends DataSource<IClient> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
+        case 'nombrecorto': return compare(a.NombreCorto, b.NombreCorto, isAsc);
         case 'description': return compare(a.description, b.description, isAsc);
         case 'code': return compare(a.code, b.code, isAsc);
         case 'id': return compare(a.id, b.id, isAsc);
@@ -86,18 +70,6 @@ export class ClientsGridDataSource extends DataSource<IClient> {
       }
     });
   }
-
-  //private getFilteredData(data: IClient[]) {
-  //  if (this.filter == null || this.filter == '') {
-  //    return data;
-  //  }
-
-  //  return data.filter()
-  //}
-
-  //applyFilter(filter: string) {
-  //  this.data.filter = filter.toLowerCase();
-  //}
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */

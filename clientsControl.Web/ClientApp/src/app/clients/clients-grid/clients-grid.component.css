@@ -1,6 +1,7 @@
 .full-width-table {
   width: 100%;
 }
+
 .search-div {
   text-align: right;
 }
@@ -8,11 +9,11 @@
 .search-form-field {
   width: 60%;
   margin-right: 10px;
-  padding: 5px 10px;
-  background-color: #f5f5f5;
-  border-radius: 1px;
+  padding: 5px 10px 0px 0px;
+  /*background-color: #f5f5f5;*/
+  /*border-radius: 1px;*/
 }
-
+/*
   .search-form-field div.mat-form-field-underline {
     display: none;
   }
@@ -27,4 +28,4 @@
   .search-form-field div.mat-form-field-suffix button {
     height: 32px;
     width: 32px;
-  }
+  }*/

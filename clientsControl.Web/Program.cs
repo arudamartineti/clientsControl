@@ -68,10 +68,14 @@ namespace clientsControl.Web
 
                     /* poblando usuarios */
 
-                    var defaultUser = new ApplicationUser { UserName = "denny@enpses.co.cu", Email = "denny@enpses.co.cu", FullName = "Denny Rodríguez Fajardo", ComercialAuthorized = true  };
-                    Task<IdentityResult> resultUser = userManager.CreateAsync(defaultUser, "Admin123*qwerty!");
-                    userManager.AddToRoleAsync(defaultUser, "Administrador");
+                    var defaultUser = new ApplicationUser { UserName = "admin@enpses.co.cu", Email = "admin@enpses.co.cu", FullName = "Administrador del Módulo", ComercialAuthorized = true  };
+                    IdentityResult resultUser = userManager.CreateAsync(defaultUser, "Admin123*-+").Result;
 
+                    if (resultUser.Succeeded)
+                    {
+                        userManager.AddToRoleAsync(defaultUser,"Administrador").Wait();
+                    }
+                   
 
                     /* fin poblando usuarios */
 

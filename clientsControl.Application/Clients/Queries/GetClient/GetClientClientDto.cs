@@ -11,6 +11,7 @@ namespace clientsControl.Application.Clients.Queries.GetClient
         public Guid Id { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
+        public string NombreCorto { set; get; }
         public string AssetsCode { get; set; }
 
         public void CreateMappings(Profile configuration)

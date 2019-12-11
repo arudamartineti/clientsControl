@@ -13,6 +13,9 @@ namespace clientsControl.Application.Clients.Queries.GetAllClients
         public string Code { get; set; }
         public string Description { get; set; }
         public string AssetsCode { get; set; }
+        public string NombreCorto { get; set; }
+        public int Licencias { get; set; }
+        public bool PostVenta { get; set; }
 
         public void CreateMappings(Profile configuration)
         {

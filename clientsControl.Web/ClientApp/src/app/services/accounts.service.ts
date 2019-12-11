@@ -17,7 +17,7 @@ export class AccountsService {
   }
 
   loginUser(user: IUser): Observable<any> {
-    return this.http.post<any>(this.baseUrl + "api/account/login", user);
+    return this.http.post<any>(this.apiUrl + "/login", user);
   }
 
   getToken(): string {

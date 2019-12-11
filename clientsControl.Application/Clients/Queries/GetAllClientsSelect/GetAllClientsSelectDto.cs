@@ -9,5 +9,6 @@ namespace clientsControl.Application.Clients.Queries.GetAllClientsSelect
         public Guid Id { set; get; }
         public string Code { set; get; }
         public string Description { set; get; }
+        public string NombreCorto { set; get; }
     }
 }

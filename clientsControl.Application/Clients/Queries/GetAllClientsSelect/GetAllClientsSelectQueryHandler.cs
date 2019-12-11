@@ -30,7 +30,8 @@ namespace clientsControl.Application.Clients.Queries.GetAllClientsSelect
                 {
                     Id = c.Id,
                     Code = c.Code,
-                    Description = c.Description
+                    Description = c.Description,
+                    NombreCorto = c.NombreCorto
                 };
 
             return qry;

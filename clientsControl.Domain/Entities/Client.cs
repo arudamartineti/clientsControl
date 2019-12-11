@@ -20,6 +20,7 @@ namespace clientsControl.Domain.Entities
         public string Description { get; set; }
         public string AssetsCode { get; set; }
         public bool Discontinued { get; set; }
+        public string NombreCorto { get; set; }
         public ICollection<Contact> Contacts {get; private set;}
         public ICollection<LicenseClientClasification> LicenseClasifications { get; private set; }
         public ICollection<License> Licenses { get; private set; }

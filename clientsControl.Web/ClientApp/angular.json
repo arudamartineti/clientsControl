@@ -26,7 +26,10 @@
             "styles": [
               //"src/custom-theme.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/devextreme/dist/css/dx.common.css",
+              "node_modules/devextreme/dist/css/dx.material.blue.light.css",
               "src/styles.css"
+
             ],
             "scripts": []
           },

@@ -1,1 +1,31 @@
-<p>menu works!</p>
+<div class="row box-shadow menu">
+  <div class="col-md-8">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon><span>Catálogos</span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]='["/assets-versions"]'>
+        <mat-icon>dialpad</mat-icon> <span>Versiones ASSETS</span>
+      </button>
+      <button mat-menu-item [routerLink]='["/modules"]'>
+        <mat-icon>voicemail</mat-icon>
+        <span>Módulos ASSETS</span>
+      </button>
+      <button mat-menu-item [routerLink]='["/stock-types"]'>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Tipos de Inventario ASSETS</span>
+      </button>
+    </mat-menu>
+    <button mat-icon-button [routerLink]='["/configuration"]'>
+      <mat-icon>more_vert</mat-icon><span>Configuración</span>
+    </button>
+  </div>
+  <div class="col-md-4">
+    <button mat-icon-button [routerLinkActive]='["login"]' *ngIf="isLogued()" (click)="logout()">
+      <mat-icon>voicemail</mat-icon><span>Salir</span>
+    </button>
+    <button mat-menu-item [routerLinkActive]='["login"]' *ngIf="!isLogued()">
+      <mat-icon>voicemail</mat-icon><span>Acceder</span>
+    </button>
+  </div>
+</div>

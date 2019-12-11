@@ -3,5 +3,8 @@ export interface IClient {
   code: string,
   description: string,
   assetsCode: string
+  licencias: number,
+  postVenta: boolean,
+  NombreCorto: string
   //contacts: IContact[]
 }

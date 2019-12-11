@@ -24,7 +24,7 @@ import { NotificationUiService } from './services/notification-ui.service';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { ModulesComponent } from './modules/modules.component';
 import { ModulesGridComponent } from './modules/modules-grid/modules-grid.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule, DateAdapter } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, DateAdapter, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule } from '@angular/material';
 import { ModulesService } from './services/modules.service';
 import { ModuleComponent } from './modules/module/module.component';
 import { StocktypesComponent } from './stocktypes/stocktypes.component';
@@ -59,7 +59,9 @@ import { ContractsGridComponent } from './contracts/contracts-grid/contracts-gri
 import { ContractsService } from './services/contracts.service';
 import { SupportPlanificationComponent } from './support-planification/support-planification.component';
 import { CalendarModule, DateAdapter as DateAdapterCalendar } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns'; 
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppMenuComponent } from './app-menu/app-menu.component'; 
 
 @NgModule({
   declarations: [
@@ -73,7 +75,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     MenuComponent,
     ClientComponent,    
     AssetsVersionsComponent,    
-    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent, ContactsComponent, ContactComponent, ContactsGridComponent, UsersComponent, UsersGridComponent, UserComponent, RegisterComponent, LoginComponent, ConfigurationComponent, ContractsComponent, ContractComponent, ContractsGridComponent, SupportPlanificationComponent         
+    AssetsVersionsGridComponent, AssetsVersionComponent, ConfirmationDialogComponent, ModulesComponent, ModulesGridComponent, ModuleComponent, StocktypesComponent, StocktypeComponent, StocktypeGridComponent, LicensesComponent, LicenseComponent, LicensesGridComponent, PaymentsComponent, PaymentComponent, PaymentsGridComponent, PaymentClientComponent, ContactsComponent, ContactComponent, ContactsGridComponent, UsersComponent, UsersGridComponent, UserComponent, RegisterComponent, LoginComponent, ConfigurationComponent, ContractsComponent, ContractComponent, ContractsGridComponent, SupportPlanificationComponent, DashboardComponent, AppMenuComponent         
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -99,12 +101,13 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       { path: 'contracts', component: ContractsComponent },
       { path: 'configuration', component: ConfigurationComponent },
       { path: 'support-planification', component: SupportPlanificationComponent },
+      { path: 'dash-board', component: DashboardComponent },
     ]),
     BrowserAnimationsModule,
     LayoutModule,
     MatTableModule,
     MatPaginatorModule, 
-    MatSortModule,    
+    MatSortModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule,    
   ],
   providers: [ClientsService, AssetsversionService, ModulesService, LicenseService, NotificationUiService, UsersService, RolesService, AuthenticationGuardService, AccountsService, HomeService, ContractsService,
     {

@@ -33,7 +33,7 @@ namespace clientsControl.Persistence.Infrastructure
             
             var connectionString = configuration.GetConnectionString(ConnectionStringName);
             */
-            var connectionString = "data source=AssetsSQLServer;initial catalog=ClientsControl;user id=sa;password=pass2pirin;MultipleActiveResultSets=True";
+            var connectionString = "data source=matrix\\sql2012;initial catalog=ClientsControl;user id=user_assetsp;password=Super2009;MultipleActiveResultSets=True";
 
             return Create(connectionString);
         }
